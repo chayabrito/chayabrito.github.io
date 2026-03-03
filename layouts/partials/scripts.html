@@ -1,0 +1,45 @@
+{{/* Fuse.js for search */}}
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js" defer></script>
+
+{{/* Firebase SDK for notifications */}}
+{{ if hugo.IsProduction }}
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-messaging-compat.js" defer></script>
+{{ end }}
+
+{{/* Main JS */}}
+{{ $mainJS := resources.Get "js/main.js" }}
+{{ if hugo.IsProduction }}
+  {{ $mainJS = $mainJS | minify | fingerprint }}
+{{ end }}
+<script src="{{ $mainJS.RelPermalink }}" defer></script>
+
+{{/* Search JS */}}
+{{ $searchJS := resources.Get "js/search.js" }}
+{{ if hugo.IsProduction }}
+  {{ $searchJS = $searchJS | minify | fingerprint }}
+{{ end }}
+<script src="{{ $searchJS.RelPermalink }}" defer></script>
+
+{{/* FCM JS */}}
+{{ $fcmJS := resources.Get "js/fcm.js" }}
+{{ if hugo.IsProduction }}
+  {{ $fcmJS = $fcmJS | minify | fingerprint }}
+{{ end }}
+<script src="{{ $fcmJS.RelPermalink }}" defer></script>
+
+{{/* Pass site data to JS */}}
+<script>
+  window.PATANGA = {
+    baseURL: {{ .Site.BaseURL }},
+    firebase: {
+      apiKey: {{ .Site.Params.firebase.apiKey }},
+      authDomain: {{ .Site.Params.firebase.authDomain }},
+      projectId: {{ .Site.Params.firebase.projectId }},
+      storageBucket: {{ .Site.Params.firebase.storageBucket }},
+      messagingSenderId: {{ .Site.Params.firebase.messagingSenderId }},
+      appId: {{ .Site.Params.firebase.appId }},
+      vapidKey: {{ .Site.Params.firebase.vapidKey }}
+    }
+  };
+</script>

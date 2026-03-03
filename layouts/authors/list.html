@@ -1,0 +1,41 @@
+{{ define "main" }}
+<section class="section section--authors">
+  <div class="container">
+    {{ partial "breadcrumb.html" . }}
+
+    <h1 class="page-title">লেখক পরিচিতি</h1>
+    <p class="page-description">ছায়াবৃতের সম্মানিত লেখকদের সাথে পরিচিত হোন।</p>
+
+    {{/* Search / Filter */}}
+    <div class="author-filters">
+      <input type="search" id="author-search" class="filter-input" placeholder="লেখক খুঁজুন..." aria-label="লেখক অনুসন্ধান">
+    </div>
+
+    {{/* Author Grid */}}
+    <div class="author-grid" id="author-grid">
+      {{ range .Pages.ByTitle }}
+      <div class="author-card" data-name="{{ .Title | lower }}">
+        <a href="{{ .RelPermalink }}" class="author-card__link">
+          <div class="author-card__avatar">
+            {{ with .Params.photo }}
+            <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy" decoding="async">
+            {{ else }}
+            <div class="author-card__avatar-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            {{ end }}
+          </div>
+          <h3 class="author-card__name">{{ .Title }}</h3>
+          {{ with .Params.bio }}
+          <p class="author-card__bio">{{ . | truncate 100 }}</p>
+          {{ end }}
+          {{ $authorSlug := .File.ContentBaseName }}
+          {{ $count := len (where (where $.Site.RegularPages "Section" "articles") ".Params.author" $authorSlug) }}
+          <span class="author-card__count">{{ $count }} টি লেখা</span>
+        </a>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

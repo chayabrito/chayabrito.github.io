@@ -1,0 +1,69 @@
+{{ define "main" }}
+<section class="section section--list">
+  <div class="container">
+    {{ partial "breadcrumb.html" . }}
+
+    <h1 class="page-title">{{ .Title | default "সকল লেখা" }}</h1>
+    {{ with .Content }}<div class="page-description prose">{{ . }}</div>{{ end }}
+
+    {{/* Filters */}}
+    <div class="list-filters" id="list-filters">
+      <div class="filter-group">
+        <label for="sort-select">সাজান:</label>
+        <select id="sort-select" class="filter-select">
+          <option value="date-desc">নতুন আগে</option>
+          <option value="date-asc">পুরনো আগে</option>
+          <option value="title-asc">শিরোনাম (ক-হ)</option>
+        </select>
+      </div>
+      {{ if .IsSection }}
+      <div class="filter-group">
+        <label for="cat-filter">বিভাগ:</label>
+        <select id="cat-filter" class="filter-select">
+          <option value="all">সকল বিভাগ</option>
+          {{ range $slug, $name := .Site.Params.categoryMap }}
+          <option value="{{ $slug }}">{{ $name }}</option>
+          {{ end }}
+        </select>
+      </div>
+      {{ end }}
+    </div>
+
+    {{/* Article Grid */}}
+    <div class="article-grid" id="article-list">
+      {{ $paginator := .Paginate (where .Pages "Kind" "page") }}
+      {{ range $paginator.Pages }}
+        {{ partial "article-card.html" . }}
+      {{ end }}
+    </div>
+
+    {{/* Pagination */}}
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="pagination" aria-label="পৃষ্ঠা নেভিগেশন">
+      {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" class="pagination__btn pagination__btn--prev" aria-label="আগের পৃষ্ঠা">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        আগের পৃষ্ঠা
+      </a>
+      {{ end }}
+
+      <div class="pagination__pages">
+        {{ range $paginator.Pagers }}
+        <a href="{{ .URL }}" class="pagination__page{{ if eq . $paginator }} is-current{{ end }}" {{ if eq . $paginator }}aria-current="page"{{ end }}>
+          {{ .PageNumber }}
+        </a>
+        {{ end }}
+      </div>
+
+      {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" class="pagination__btn pagination__btn--next" aria-label="পরের পৃষ্ঠা">
+        পরের পৃষ্ঠা
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+      {{ end }}
+    </nav>
+    {{ end }}
+
+  </div>
+</section>
+{{ end }}

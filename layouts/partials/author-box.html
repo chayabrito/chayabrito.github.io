@@ -1,0 +1,32 @@
+{{/* Author box for article pages */}}
+{{ $authorSlug := .Params.author }}
+{{ $authorPage := .Site.GetPage (printf "/authors/%s" $authorSlug) }}
+{{ if $authorPage }}
+<aside class="author-box" aria-label="লেখক পরিচিতি">
+  <a href="{{ $authorPage.RelPermalink }}" class="author-box__link">
+    <div class="author-box__avatar">
+      {{ with $authorPage.Params.photo }}
+      <img src="{{ . | relURL }}" alt="{{ $authorPage.Title }}" loading="lazy" decoding="async">
+      {{ else }}
+      <div class="author-box__avatar-placeholder">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      {{ end }}
+    </div>
+    <div class="author-box__info">
+      <h3 class="author-box__name">{{ $authorPage.Title }}</h3>
+      {{ with $authorPage.Params.bio }}
+      <p class="author-box__bio">{{ . | truncate 180 }}</p>
+      {{ end }}
+      <span class="author-box__more">সব লেখা দেখুন →</span>
+    </div>
+  </a>
+  {{ with $authorPage.Params.social }}
+  <div class="author-box__social">
+    {{ with .facebook }}<a href="{{ . }}" target="_blank" rel="noopener" aria-label="ফেসবুক">ফেসবুক</a>{{ end }}
+    {{ with .twitter }}<a href="{{ . }}" target="_blank" rel="noopener" aria-label="টুইটার">টুইটার</a>{{ end }}
+    {{ with .website }}<a href="{{ . }}" target="_blank" rel="noopener" aria-label="ওয়েবসাইট">ওয়েবসাইট</a>{{ end }}
+  </div>
+  {{ end }}
+</aside>
+{{ end }}

@@ -1,0 +1,72 @@
+<header class="site-header" id="site-header" role="banner">
+  <div class="container header-inner">
+    {{/* Logo / Site Name */}}
+    <a href="{{ "/" | relURL }}" class="site-logo" aria-label="ছায়াবৃত হোমপেজ">
+      <span class="site-logo__bengali">ছায়াবৃত</span>
+      <span class="site-logo__english">Chayabrito</span>
+    </a>
+
+    {{/* Search Bar */}}
+    <div class="header-search" id="header-search">
+      <button class="search-toggle" id="search-toggle" aria-label="অনুসন্ধান খুলুন" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <div class="search-overlay" id="search-overlay" role="search" aria-label="সাইট অনুসন্ধান" hidden>
+        <div class="search-overlay__inner">
+          <input type="search" id="search-input" class="search-input" placeholder="অনুসন্ধান করুন..." autocomplete="off" aria-label="অনুসন্ধান">
+          <button class="search-close" id="search-close" aria-label="অনুসন্ধান বন্ধ করুন">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+          <div class="search-results" id="search-results" role="listbox" aria-label="অনুসন্ধান ফলাফল"></div>
+        </div>
+      </div>
+    </div>
+
+    {{/* Action buttons */}}
+    <div class="header-actions">
+      {{/* Dark mode toggle */}}
+      <button class="theme-toggle" id="theme-toggle" aria-label="থিম পরিবর্তন" title="থিম পরিবর্তন">
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+
+      {{/* Notification bell */}}
+      <button class="notification-bell" id="notification-bell" aria-label="বিজ্ঞপ্তি সাবস্ক্রাইব করুন" title="বিজ্ঞপ্তি">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="notification-dot" id="notification-dot" hidden></span>
+      </button>
+
+      {{/* Mobile menu toggle */}}
+      <button class="menu-toggle" id="menu-toggle" aria-label="মেনু খুলুন" aria-expanded="false">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+
+    {{/* Navigation */}}
+    <nav class="main-nav" id="main-nav" role="navigation" aria-label="প্রধান নেভিগেশন">
+      <ul class="nav-list">
+        {{ range .Site.Menus.main }}
+        <li class="nav-item{{ if $.IsMenuCurrent "main" . }} is-active{{ end }}{{ if or .HasChildren (eq .Name "বিভাগসমূহ") }} has-children{{ end }}">
+          {{ if eq .Name "বিভাগসমূহ" }}
+          <button class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            {{ .Name }}
+            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <ul class="nav-dropdown" role="menu">
+            {{ range $.Site.Menus.categories }}
+            <li role="menuitem"><a href="{{ .URL | relURL }}" class="dropdown-link">{{ .Name }}</a></li>
+            {{ end }}
+          </ul>
+          {{ else }}
+          <a href="{{ .URL | relURL }}" class="nav-link{{ if eq .URL "mailto:chayabrito.magazine@gmail.com" }} is-contact{{ end }}">{{ .Name }}</a>
+          {{ end }}
+        </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+</header>

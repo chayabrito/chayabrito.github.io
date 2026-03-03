@@ -1,0 +1,72 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      {{/* Brand column */}}
+      <div class="footer-brand">
+        <a href="{{ "/" | relURL }}" class="footer-logo">
+          <span class="footer-logo__bengali">ছায়াবৃত</span>
+        </a>
+        <p class="footer-tagline">{{ .Site.Params.tagline }}</p>
+        <div class="footer-social">
+          {{ with .Site.Params.social.facebook }}
+          <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="ফেসবুক">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          {{ end }}
+          {{ with .Site.Params.social.twitter }}
+          <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="টুইটার/এক্স">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          {{ end }}
+          {{ with .Site.Params.social.instagram }}
+          <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="ইনস্টাগ্রাম">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          {{ end }}
+        </div>
+      </div>
+
+      {{/* Categories column */}}
+      <div class="footer-links">
+        <h3 class="footer-heading">বিভাগসমূহ</h3>
+        <ul>
+          {{ range first 6 .Site.Menus.categories }}
+          <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+
+      {{/* Quick links column */}}
+      <div class="footer-links">
+        <h3 class="footer-heading">দ্রুত লিঙ্ক</h3>
+        <ul>
+          <li><a href="{{ "about/" | relURL }}">আমাদের কথা</a></li>
+          <li><a href="{{ "authors/" | relURL }}">লেখক পরিচিতি</a></li>
+          <li><a href="{{ "archive/" | relURL }}">আর্কাইভ</a></li>
+          <li><a href="{{ "index.xml" | relURL }}">RSS ফিড</a></li>
+          <li><a href="mailto:{{ .Site.Params.email }}">যোগাযোগ</a></li>
+        </ul>
+      </div>
+
+      {{/* Newsletter / Notifications column */}}
+      <div class="footer-newsletter">
+        <h3 class="footer-heading">সংযুক্ত থাকুন</h3>
+        <p>নতুন লেখা প্রকাশিত হলে সরাসরি আপনার ব্রাউজারে বিজ্ঞপ্তি পান।</p>
+        <button class="btn btn--primary btn--sm" id="footer-subscribe-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          বিজ্ঞপ্তি চালু করুন
+        </button>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>{{ .Site.Copyright | default (printf "© %d ছায়াবৃত। সর্বস্বত্ব সংরক্ষিত।" now.Year) }}</p>
+      <p class="footer-credit">হুগো দিয়ে তৈরি। গিটহাব পেজেসে হোস্টেড।</p>
+    </div>
+  </div>
+</footer>
+
+{{/* Scroll to top button */}}
+<button class="scroll-top" id="scroll-top" aria-label="উপরে যান" title="উপরে যান" hidden>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+</button>

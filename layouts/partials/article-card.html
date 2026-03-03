@@ -1,0 +1,43 @@
+{{/* Article Card partial - expects "page" context */}}
+{{ $page := . }}
+<article class="article-card" role="article">
+  <a href="{{ $page.RelPermalink }}" class="article-card__link" aria-label="{{ $page.Title }}">
+    <div class="article-card__image">
+      {{ with $page.Params.image }}
+      <img src="{{ . | relURL }}" alt="{{ $page.Title }}" loading="lazy" decoding="async">
+      {{ else }}
+      <div class="article-card__placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      {{ end }}
+    </div>
+    <div class="article-card__content">
+      {{ with $page.Params.categories }}
+      <div class="article-card__categories">
+        {{ range . }}
+        {{ $cat := . }}
+        <span class="article-card__category">{{ with site.Params.categoryMap }}{{ index . $cat | default $cat }}{{ else }}{{ $cat }}{{ end }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
+      <h3 class="article-card__title">{{ $page.Title }}</h3>
+      {{ with $page.Params.excerpt }}
+      <p class="article-card__excerpt">{{ . | truncate 120 }}</p>
+      {{ end }}
+      <div class="article-card__meta">
+        {{ with $page.Params.author }}
+        {{ $authorPage := $.Site.GetPage (printf "/authors/%s" .) }}
+        {{ if $authorPage }}
+        <span class="article-card__author">{{ $authorPage.Title }}</span>
+        {{ else }}
+        <span class="article-card__author">{{ . }}</span>
+        {{ end }}
+        {{ end }}
+        <time class="article-card__date" datetime="{{ $page.Date.Format "2006-01-02" }}">
+          {{ $page.Date.Format "2 January 2006" | replaceRE "January" "জানুয়ারি" | replaceRE "February" "ফেব্রুয়ারি" | replaceRE "March" "মার্চ" | replaceRE "April" "এপ্রিল" | replaceRE "May" "মে" | replaceRE "June" "জুন" | replaceRE "July" "জুলাই" | replaceRE "August" "আগস্ট" | replaceRE "September" "সেপ্টেম্বর" | replaceRE "October" "অক্টোবর" | replaceRE "November" "নভেম্বর" | replaceRE "December" "ডিসেম্বর" | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }}
+        </time>
+        <span class="article-card__readtime">{{ $page.ReadingTime }} মিনিট</span>
+      </div>
+    </div>
+  </a>
+</article>

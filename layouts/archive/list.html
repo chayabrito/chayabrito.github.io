@@ -1,0 +1,64 @@
+{{ define "main" }}
+<section class="section section--archive">
+  <div class="container">
+    {{ partial "breadcrumb.html" . }}
+
+    <h1 class="page-title">আর্কাইভ</h1>
+    <p class="page-description">ছায়াবৃতের সকল প্রকাশনার সময়ানুক্রমিক তালিকা।</p>
+
+    {{/* Filters */}}
+    <div class="archive-filters">
+      <input type="search" id="archive-search" class="filter-input" placeholder="শিরোনাম বা লেখক খুঁজুন..." aria-label="আর্কাইভ অনুসন্ধান">
+      <select id="archive-year-filter" class="filter-select" aria-label="বছর অনুযায়ী ফিল্টার">
+        <option value="all">সকল বছর</option>
+        {{ $years := slice }}
+        {{ range (where .Site.RegularPages "Section" "articles").GroupByDate "2006" }}
+          {{ $years = $years | append .Key }}
+        {{ end }}
+        {{ range $years | uniq }}
+        <option value="{{ . }}">{{ . }}</option>
+        {{ end }}
+      </select>
+      <select id="archive-cat-filter" class="filter-select" aria-label="বিভাগ অনুযায়ী ফিল্টার">
+        <option value="all">সকল বিভাগ</option>
+        {{ range $slug, $name := .Site.Params.categoryMap }}
+        <option value="{{ $slug }}">{{ $name }}</option>
+        {{ end }}
+      </select>
+    </div>
+
+    {{/* Archive grouped by year and month */}}
+    <div class="archive-list" id="archive-list">
+      {{ range (where .Site.RegularPages "Section" "articles").GroupByDate "2006" }}
+      <div class="archive-year" data-year="{{ .Key }}">
+        <h2 class="archive-year__title">{{ .Key }}</h2>
+        {{ range .Pages.GroupByDate "January" }}
+        <div class="archive-month">
+          <h3 class="archive-month__title">{{ .Key }}</h3>
+          <ul class="archive-entries">
+            {{ range .Pages }}
+            <li class="archive-entry" data-categories="{{ delimit .Params.categories " " }}" data-title="{{ .Title | lower }}" data-author="{{ .Params.author | lower }}">
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02" }}</time>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              {{ with .Params.categories }}
+              <span class="archive-entry__cat">
+                {{ range . }}{{ $cat := . }}{{ with site.Params.categoryMap }}{{ index . $cat | default $cat }}{{ else }}{{ $cat }}{{ end }}{{ end }}
+              </span>
+              {{ end }}
+              {{ with .Params.author }}
+              {{ $authorPage := $.Site.GetPage (printf "/authors/%s" .) }}
+              {{ if $authorPage }}
+              <span class="archive-entry__author">{{ $authorPage.Title }}</span>
+              {{ end }}
+              {{ end }}
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

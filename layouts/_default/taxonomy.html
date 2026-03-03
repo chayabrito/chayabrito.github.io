@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section class="section-page">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">সকল ট্যাগ</h1>
+    </div>
+    <div class="categories-grid">
+      {{ range .Data.Terms.Alphabetical }}
+        <a href="{{ .Page.RelPermalink }}" class="category-card">
+          <h3 class="category-card__title">{{ .Page.Title }}</h3>
+          <span class="category-card__count">{{ .Count }}টি লেখা</span>
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

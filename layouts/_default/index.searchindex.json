@@ -1,0 +1,17 @@
+[
+{{- $articles := where .Site.RegularPages "Section" "articles" -}}
+{{- range $index, $page := $articles -}}
+  {{- if $index }},{{ end -}}
+  {
+    "title": {{ $page.Title | jsonify }},
+    "url": {{ $page.RelPermalink | jsonify }},
+    "excerpt": {{ $page.Params.excerpt | default "" | jsonify }},
+    "content": {{ $page.Plain | truncate 600 | jsonify }},
+    "categories": {{ $page.Params.categories | default slice | jsonify }},
+    "tags": {{ $page.Params.tags | default slice | jsonify }},
+    "author": {{ $page.Params.author | default "" | jsonify }},
+    "date": {{ $page.Date.Format "2006-01-02" | jsonify }},
+    "readingTime": {{ $page.ReadingTime }}
+  }
+{{- end -}}
+]

@@ -1,0 +1,6 @@
+{{/* Reading progress bar - only on article pages */}}
+{{ if and .IsPage (eq .Section "articles") }}
+<div class="reading-progress" id="reading-progress" aria-hidden="true">
+  <div class="reading-progress__bar" id="reading-progress-bar"></div>
+</div>
+{{ end }}

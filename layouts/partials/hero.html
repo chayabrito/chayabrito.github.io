@@ -1,0 +1,57 @@
+{{/* Featured articles hero/carousel for homepage */}}
+{{ $featured := where (where .Site.RegularPages "Section" "articles") ".Params.featured" true }}
+{{ $featured = first 6 $featured }}
+
+{{ if gt (len $featured) 0 }}
+<section class="hero-carousel" id="hero-carousel" aria-label="নির্বাচিত লেখা">
+  <div class="carousel-track" id="carousel-track">
+    {{ range $i, $page := $featured }}
+    <div class="carousel-slide{{ if eq $i 0 }} is-active{{ end }}" data-index="{{ $i }}">
+      <div class="carousel-slide__bg">
+        {{ with $page.Params.image }}
+        <img src="{{ . | relURL }}" alt="" loading="{{ if eq $i 0 }}eager{{ else }}lazy{{ end }}" decoding="async">
+        {{ end }}
+        <div class="carousel-slide__overlay"></div>
+      </div>
+      <div class="carousel-slide__content container">
+        {{ with $page.Params.categories }}
+        <span class="carousel-slide__category">{{ with $.Site.Params.categoryMap }}{{ index . (index $page.Params.categories 0) | default (index $page.Params.categories 0) }}{{ else }}{{ index $page.Params.categories 0 }}{{ end }}</span>
+        {{ end }}
+        <h2 class="carousel-slide__title">
+          <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+        </h2>
+        {{ with $page.Params.excerpt }}
+        <p class="carousel-slide__excerpt">{{ . | truncate 150 }}</p>
+        {{ end }}
+        <div class="carousel-slide__meta">
+          {{ with $page.Params.author }}
+          {{ $authorPage := $.Site.GetPage (printf "/authors/%s" .) }}
+          {{ if $authorPage }}
+          <span>{{ $authorPage.Title }}</span>
+          {{ end }}
+          {{ end }}
+          <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "2 January 2006" | replaceRE "January" "জানুয়ারি" | replaceRE "February" "ফেব্রুয়ারি" | replaceRE "March" "মার্চ" | replaceRE "April" "এপ্রিল" | replaceRE "May" "মে" | replaceRE "June" "জুন" | replaceRE "July" "জুলাই" | replaceRE "August" "আগস্ট" | replaceRE "September" "সেপ্টেম্বর" | replaceRE "October" "অক্টোবর" | replaceRE "November" "নভেম্বর" | replaceRE "December" "ডিসেম্বর" | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }}</time>
+        </div>
+        <a href="{{ $page.RelPermalink }}" class="btn btn--primary">পড়ুন</a>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+
+  {{ if gt (len $featured) 1 }}
+  <div class="carousel-controls">
+    <button class="carousel-btn carousel-btn--prev" id="carousel-prev" aria-label="আগের স্লাইড">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="carousel-dots" id="carousel-dots">
+      {{ range $i, $_ := $featured }}
+      <button class="carousel-dot{{ if eq $i 0 }} is-active{{ end }}" data-index="{{ $i }}" aria-label="স্লাইড {{ add $i 1 }}"></button>
+      {{ end }}
+    </div>
+    <button class="carousel-btn carousel-btn--next" id="carousel-next" aria-label="পরের স্লাইড">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  {{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,150 @@
+baseURL: "https://chayabrito.github.io/"
+languageCode: "bn"
+title: "ছায়াবৃত"
+copyright: "© ২০২৬ ছায়াবৃত। সর্বস্বত্ব সংরক্ষিত।"
+
+# Build
+buildDrafts: false
+buildFuture: false
+enableRobotsTXT: true
+enableGitInfo: true
+
+# Pagination
+paginate: 12
+paginatePath: "page"
+
+# Taxonomies
+taxonomies:
+  category: categories
+  tag: tags
+
+# Permalinks
+permalinks:
+  articles: "/articles/:slug/"
+
+# Output formats
+outputFormats:
+  SearchIndex:
+    mediaType: "application/json"
+    baseName: "search-index"
+    isPlainText: true
+    notAlternative: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - SearchIndex
+
+# Markup
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      footnote: true
+      strikethrough: true
+      table: true
+  highlight:
+    style: monokai
+    lineNos: false
+
+# Sitemap
+sitemap:
+  changeFreq: "weekly"
+  priority: 0.5
+
+# Menus
+menus:
+  main:
+    - name: "প্রচ্ছদ"
+      url: "/"
+      weight: 1
+    - name: "বিভাগসমূহ"
+      url: "/categories/"
+      weight: 2
+    - name: "আর্কাইভ"
+      url: "/archive/"
+      weight: 3
+    - name: "লেখক পরিচিতি"
+      url: "/authors/"
+      weight: 4
+    - name: "আমাদের কথা"
+      url: "/about/"
+      weight: 5
+    - name: "যোগাযোগ"
+      url: "mailto:chayabrito.magazine@gmail.com"
+      weight: 6
+
+  categories:
+    - name: "কবিতা"
+      url: "/categories/kobita/"
+      weight: 1
+    - name: "গল্প"
+      url: "/categories/golpo/"
+      weight: 2
+    - name: "প্রবন্ধ"
+      url: "/categories/probondho/"
+      weight: 3
+    - name: "অনুবাদ"
+      url: "/categories/onubad/"
+      weight: 4
+    - name: "সাক্ষাৎকার"
+      url: "/categories/shakkhatkar/"
+      weight: 5
+    - name: "পাঠসূত্র"
+      url: "/categories/pathosutro/"
+      weight: 6
+    - name: "ধারাবাহিক"
+      url: "/categories/dharabahik/"
+      weight: 7
+    - name: "গান"
+      url: "/categories/gaan/"
+      weight: 8
+    - name: "ছড়া"
+      url: "/categories/chora/"
+      weight: 9
+    - name: "সংবাদ"
+      url: "/categories/songbad/"
+      weight: 10
+    - name: "খোলা জানালা"
+      url: "/categories/khola-janala/"
+      weight: 11
+
+# Params
+params:
+  tagline: "বাংলা সাহিত্য ও সংস্কৃতির আলোকবর্তিকা"
+  description: "ছায়াবৃত — একটি বাংলা অনলাইন সাহিত্য পত্রিকা। কবিতা, গল্প, প্রবন্ধ, অনুবাদ ও আরও অনেক কিছু।"
+  email: "chayabrito.magazine@gmail.com"
+  logo: "/images/logo.png"
+  defaultImage: "/images/default-article.jpg"
+
+  social:
+    facebook: "https://facebook.com/chayabritomag"
+    twitter: "https://twitter.com/chayabritomag"
+    instagram: "https://instagram.com/chayabritomag"
+
+  analytics:
+    google: "G-XXXXXXXXXX"
+
+  firebase:
+    apiKey: "YOUR_FIREBASE_API_KEY"
+    authDomain: "YOUR_PROJECT.firebaseapp.com"
+    projectId: "YOUR_PROJECT_ID"
+    storageBucket: "YOUR_PROJECT.appspot.com"
+    messagingSenderId: "YOUR_SENDER_ID"
+    appId: "YOUR_APP_ID"
+    vapidKey: "YOUR_VAPID_KEY"
+
+  categoryMap:
+    kobita: "কবিতা"
+    golpo: "গল্প"
+    probondho: "প্রবন্ধ"
+    onubad: "অনুবাদ"
+    shakkhatkar: "সাক্ষাৎকার"
+    pathosutro: "পাঠসূত্র"
+    dharabahik: "ধারাবাহিক"
+    gaan: "গান"
+    chora: "ছড়া"
+    songbad: "সংবাদ"
+    khola-janala: "খোলা জানালা"

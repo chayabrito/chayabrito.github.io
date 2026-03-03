@@ -1,0 +1,89 @@
+{{ define "main" }}
+
+<article class="article-single" itemscope itemtype="https://schema.org/Article">
+  <div class="container container--article">
+
+    {{/* Breadcrumb */}}
+    {{ partial "breadcrumb.html" . }}
+
+    {{/* Article Header */}}
+    <header class="article-header">
+      {{ with .Params.categories }}
+      <div class="article-header__categories">
+        {{ range . }}
+        {{ $cat := . }}
+        <a href="{{ printf "categories/%s/" $cat | relURL }}" class="article-tag">{{ with site.Params.categoryMap }}{{ index . $cat | default $cat }}{{ else }}{{ $cat }}{{ end }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <h1 class="article-header__title" itemprop="headline">{{ .Title }}</h1>
+
+      {{ with .Params.excerpt }}
+      <p class="article-header__excerpt" itemprop="description">{{ . }}</p>
+      {{ end }}
+
+      <div class="article-header__meta">
+        {{ with .Params.author }}
+        {{ $authorPage := $.Site.GetPage (printf "/authors/%s" .) }}
+        {{ if $authorPage }}
+        <a href="{{ $authorPage.RelPermalink }}" class="article-header__author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+          {{ with $authorPage.Params.photo }}
+          <img src="{{ . | relURL }}" alt="{{ $authorPage.Title }}" class="article-header__author-img" loading="lazy">
+          {{ end }}
+          <span itemprop="name">{{ $authorPage.Title }}</span>
+        </a>
+        {{ end }}
+        {{ end }}
+
+        <time class="article-header__date" datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">
+          {{ .Date.Format "2 January 2006" | replaceRE "January" "জানুয়ারি" | replaceRE "February" "ফেব্রুয়ারি" | replaceRE "March" "মার্চ" | replaceRE "April" "এপ্রিল" | replaceRE "May" "মে" | replaceRE "June" "জুন" | replaceRE "July" "জুলাই" | replaceRE "August" "আগস্ট" | replaceRE "September" "সেপ্টেম্বর" | replaceRE "October" "অক্টোবর" | replaceRE "November" "নভেম্বর" | replaceRE "December" "ডিসেম্বর" | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }}
+        </time>
+
+        <span class="article-header__readtime">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          {{ .ReadingTime }} মিনিটে পড়া যাবে
+        </span>
+      </div>
+    </header>
+
+    {{/* Featured Image */}}
+    {{ with .Params.image }}
+    <figure class="article-hero-image">
+      <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="eager" decoding="async" itemprop="image">
+      {{ with $.Params.image_caption }}
+      <figcaption>{{ . }}</figcaption>
+      {{ end }}
+    </figure>
+    {{ end }}
+
+    {{/* Article Content */}}
+    <div class="article-content prose" itemprop="articleBody">
+      {{ .Content }}
+    </div>
+
+    {{/* Tags */}}
+    {{ with .Params.tags }}
+    <div class="article-tags">
+      <span class="article-tags__label">ট্যাগ:</span>
+      {{ range . }}
+      <a href="{{ printf "tags/%s/" . | relURL }}" class="article-tag article-tag--sm">{{ . }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* Social Share */}}
+    {{ partial "social-share.html" . }}
+
+    <hr class="article-divider">
+
+    {{/* Author Box */}}
+    {{ partial "author-box.html" . }}
+
+    {{/* Related Articles */}}
+    {{ partial "related-articles.html" . }}
+
+  </div>
+</article>
+
+{{ end }}

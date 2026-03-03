@@ -1,0 +1,54 @@
+{{/* Related articles - matches by categories and tags */}}
+{{ $page := . }}
+{{ $related := slice }}
+
+{{/* Get related by categories */}}
+{{ with .Params.categories }}
+  {{ $cats := . }}
+  {{ range where $page.Site.RegularPages "Section" "articles" }}
+    {{ if ne .File.UniqueID $page.File.UniqueID }}
+      {{ $match := false }}
+      {{ range .Params.categories }}
+        {{ if in $cats . }}
+          {{ $match = true }}
+        {{ end }}
+      {{ end }}
+      {{ if $match }}
+        {{ $related = $related | append . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Also match by tags */}}
+{{ with .Params.tags }}
+  {{ $tags := . }}
+  {{ range where $page.Site.RegularPages "Section" "articles" }}
+    {{ if ne .File.UniqueID $page.File.UniqueID }}
+      {{ $match := false }}
+      {{ range .Params.tags }}
+        {{ if in $tags . }}
+          {{ $match = true }}
+        {{ end }}
+      {{ end }}
+      {{ if $match }}
+        {{ $related = $related | append . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Deduplicate and limit */}}
+{{ $related = $related | uniq }}
+{{ $related = first 4 $related }}
+
+{{ if gt (len $related) 0 }}
+<section class="related-articles" aria-label="সম্পর্কিত লেখা">
+  <h2 class="section-title">সম্পর্কিত লেখা</h2>
+  <div class="article-grid article-grid--compact">
+    {{ range $related }}
+      {{ partial "article-card.html" . }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}

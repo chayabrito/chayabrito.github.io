@@ -1,0 +1,59 @@
+{{/* Breadcrumb navigation */}}
+<nav class="breadcrumb" aria-label="ব্রেডক্রাম্ব">
+  <ol class="breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="{{ "/" | relURL }}" itemprop="item"><span itemprop="name">প্রচ্ছদ</span></a>
+      <meta itemprop="position" content="1">
+    </li>
+
+    {{ if eq .Section "articles" }}
+    <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="{{ "articles/" | relURL }}" itemprop="item"><span itemprop="name">লেখা</span></a>
+      <meta itemprop="position" content="2">
+    </li>
+      {{ if .IsPage }}
+      {{ with .Params.categories }}
+      {{ $cat := index . 0 }}
+      <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="{{ printf "categories/%s/" $cat | relURL }}" itemprop="item"><span itemprop="name">{{ with $.Site.Params.categoryMap }}{{ index . $cat | default $cat }}{{ else }}{{ $cat }}{{ end }}</span></a>
+        <meta itemprop="position" content="3">
+      </li>
+      {{ end }}
+      <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+        <span itemprop="name">{{ .Title | truncate 40 }}</span>
+        <meta itemprop="position" content="4">
+      </li>
+      {{ end }}
+
+    {{ else if eq .Section "authors" }}
+    <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="{{ "authors/" | relURL }}" itemprop="item"><span itemprop="name">লেখক পরিচিতি</span></a>
+      <meta itemprop="position" content="2">
+    </li>
+      {{ if .IsPage }}
+      <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+        <span itemprop="name">{{ .Title }}</span>
+        <meta itemprop="position" content="3">
+      </li>
+      {{ end }}
+
+    {{ else if eq .Section "categories" }}
+    <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="{{ "categories/" | relURL }}" itemprop="item"><span itemprop="name">বিভাগসমূহ</span></a>
+      <meta itemprop="position" content="2">
+    </li>
+      {{ if .Title }}
+      <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+        <span itemprop="name">{{ .Title }}</span>
+        <meta itemprop="position" content="3">
+      </li>
+      {{ end }}
+
+    {{ else }}
+    <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+      <span itemprop="name">{{ .Title }}</span>
+      <meta itemprop="position" content="2">
+    </li>
+    {{ end }}
+  </ol>
+</nav>

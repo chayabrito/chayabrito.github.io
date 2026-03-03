@@ -1,0 +1,59 @@
+{{ define "main" }}
+<section class="section section--author-single">
+  <div class="container container--article">
+    {{ partial "breadcrumb.html" . }}
+
+    <div class="author-profile">
+      <div class="author-profile__header">
+        <div class="author-profile__avatar">
+          {{ with .Params.photo }}
+          <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="eager">
+          {{ else }}
+          <div class="author-profile__avatar-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          {{ end }}
+        </div>
+        <div class="author-profile__info">
+          <h1 class="author-profile__name">{{ .Title }}</h1>
+          {{ with .Params.bio }}
+          <p class="author-profile__bio">{{ . }}</p>
+          {{ end }}
+          {{ with .Params.social }}
+          <div class="author-profile__social">
+            {{ with .facebook }}<a href="{{ . }}" target="_blank" rel="noopener" class="btn btn--sm btn--outline">ফেসবুক</a>{{ end }}
+            {{ with .twitter }}<a href="{{ . }}" target="_blank" rel="noopener" class="btn btn--sm btn--outline">টুইটার</a>{{ end }}
+            {{ with .website }}<a href="{{ . }}" target="_blank" rel="noopener" class="btn btn--sm btn--outline">ওয়েবসাইট</a>{{ end }}
+            {{ with .email }}<a href="mailto:{{ . }}" class="btn btn--sm btn--outline">ইমেইল</a>{{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+
+      {{ with .Content }}
+      <div class="author-profile__content prose">
+        {{ . }}
+      </div>
+      {{ end }}
+    </div>
+
+    {{/* Articles by this author */}}
+    {{ $authorSlug := .File.ContentBaseName }}
+    {{ $articles := where (where .Site.RegularPages "Section" "articles") ".Params.author" $authorSlug }}
+
+    {{ if gt (len $articles) 0 }}
+    <section class="author-works" aria-label="এই লেখকের লেখা">
+      <h2 class="section-title">{{ .Title }}-এর লেখা ({{ len $articles }})</h2>
+      <div class="article-grid">
+        {{ range $articles }}
+          {{ partial "article-card.html" . }}
+        {{ end }}
+      </div>
+    </section>
+    {{ else }}
+    <p class="empty-message">এই লেখকের কোনো লেখা এখনও প্রকাশিত হয়নি।</p>
+    {{ end }}
+
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,64 @@
+{{ define "main" }}
+
+{{/* Hero / Featured Articles Carousel */}}
+{{ partial "hero.html" . }}
+
+{{/* Recent Articles Section */}}
+<section class="section section--recent" aria-label="সাম্প্রতিক লেখা">
+  <div class="container">
+    <h2 class="section-title">সাম্প্রতিক লেখা</h2>
+    <div class="article-grid" id="recent-articles">
+      {{ $articles := where .Site.RegularPages "Section" "articles" }}
+      {{ range first 9 $articles }}
+        {{ partial "article-card.html" . }}
+      {{ end }}
+    </div>
+    {{ if gt (len $articles) 9 }}
+    <div class="section-more">
+      <a href="{{ "articles/" | relURL }}" class="btn btn--outline">সব লেখা দেখুন</a>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+{{/* Category Showcase Section */}}
+<section class="section section--categories" aria-label="বিভাগ অনুযায়ী লেখা">
+  <div class="container">
+    <h2 class="section-title">বিভাগ অনুযায়ী</h2>
+    <div class="category-showcase">
+      {{ $catMap := .Site.Params.categoryMap }}
+      {{ range $slug, $name := $catMap }}
+        {{ $pages := where (where $.Site.RegularPages "Section" "articles") ".Params.categories" "intersect" (slice $slug) }}
+        {{ if gt (len $pages) 0 }}
+        <div class="category-block">
+          <h3 class="category-block__title">
+            <a href="{{ printf "categories/%s/" $slug | relURL }}">{{ $name }}</a>
+          </h3>
+          <div class="category-block__articles">
+            {{ range first 3 $pages }}
+            <article class="mini-card">
+              <a href="{{ .RelPermalink }}">
+                <h4 class="mini-card__title">{{ .Title }}</h4>
+                <div class="mini-card__meta">
+                  {{ with .Params.author }}
+                  {{ $authorPage := $.Site.GetPage (printf "/authors/%s" .) }}
+                  {{ if $authorPage }}
+                  <span>{{ $authorPage.Title }}</span>
+                  {{ end }}
+                  {{ end }}
+                </div>
+              </a>
+            </article>
+            {{ end }}
+          </div>
+          {{ if gt (len $pages) 3 }}
+          <a href="{{ printf "categories/%s/" $slug | relURL }}" class="category-block__more">আরও দেখুন →</a>
+          {{ end }}
+        </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ end }}
