@@ -120,9 +120,9 @@ params:
   defaultImage: "/images/default-article.jpg"
 
   social:
-    facebook: "https://facebook.com/chayabritomag"
-    twitter: "https://twitter.com/chayabritomag"
-    instagram: "https://instagram.com/chayabritomag"
+    facebook: "https://facebook.com/chayabrito"
+    # twitter: "https://twitter.com/chayabritomag"
+    # instagram: "https://instagram.com/chayabritomag"
 
   analytics:
     google: "G-XXXXXXXXXX"
