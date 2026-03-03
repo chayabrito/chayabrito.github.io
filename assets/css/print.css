@@ -9,6 +9,7 @@
   .reading-progress,
   .social-share,
   .related-articles,
+  .more-by-author,
   .scroll-top,
   .breadcrumb,
   .notification-bell,
@@ -20,6 +21,10 @@
   .archive-filters,
   .author-filters,
   .btn,
+  .article-sidebar,
+  .article-tags,
+  .article-header__categories,
+  .article-hero-image,
   #footer-subscribe-btn {
     display: none !important;
   }
@@ -60,7 +65,7 @@
 
   /* Article header styling for print */
   .article-header {
-    text-align: right;
+    text-align: left;
     margin-bottom: 2em;
     border-bottom: 1px solid #ccc;
     padding-bottom: 1em;
@@ -74,6 +79,10 @@
     justify-content: flex-start;
     font-size: 10pt;
     color: #666;
+  }
+
+  .article-header__excerpt {
+    margin: 0 !important;
   }
 
   /* Remove shadows and rounded corners */
