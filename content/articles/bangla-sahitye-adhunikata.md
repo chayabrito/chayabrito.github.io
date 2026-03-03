@@ -5,8 +5,8 @@ date: 2026-03-03
 author: "debashis-mukhopadhyay"
 categories: ["probondho"]
 tags: ["প্রবন্ধ", "আধুনিকতা", "সাহিত্য", "সমালোচনা"]
-featured: true
-image: "/images/articles/adhunikata.jpg"
+featured: false
+image: ""
 excerpt: "বাংলা সাহিত্যে আধুনিকতার সূচনা, বিকাশ ও তার বর্তমান প্রাসঙ্গিকতা নিয়ে একটি বিশ্লেষণমূলক প্রবন্ধ।"
 seo_title: "বাংলা সাহিত্যে আধুনিকতা — দেবাশিস মুখোপাধ্যায় | ছায়াবৃত"
 seo_description: "বাংলা সাহিত্যে আধুনিকতাবাদের সূচনা, বিকাশ, প্রধান স্রষ্টা ও তার সমকালীন প্রাসঙ্গিকতা।"
