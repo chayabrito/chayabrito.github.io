@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  var config = window.PATANGA && window.PATANGA.firebase;
+  var config = window.CHAYABRITO && window.CHAYABRITO.firebase;
   if (!config || config.apiKey === 'YOUR_FIREBASE_API_KEY') {
     // Firebase not configured
     return;
@@ -15,6 +15,9 @@
   var bellBtn = document.getElementById('notification-bell');
   var footerBtn = document.getElementById('footer-subscribe-btn');
   var notifDot = document.getElementById('notification-dot');
+  var swRegistration = null;
+  var messagingInstance = null;
+  var firestoreInstance = null;
 
   function isSubscribed() {
     return localStorage.getItem('chayabrito-fcm-subscribed') === 'true';
@@ -34,6 +37,7 @@
 
   function initFirebase() {
     if (typeof firebase === 'undefined') return;
+    console.log('Initializing Firebase for FCM...');
 
     try {
       if (!firebase.apps.length) {
@@ -47,20 +51,25 @@
         });
       }
 
-      var messaging = firebase.messaging();
+      messagingInstance = firebase.messaging();
+      // Initialize Firestore (compat) if available
+      if (firebase.firestore) {
+        firestoreInstance = firebase.firestore();
+      }
 
-      // Register service worker
+      // Register service worker (store registration to use when requesting token)
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/firebase-messaging-sw.js')
           .then(function (registration) {
-            messaging.useServiceWorker(registration);
+            swRegistration = registration;
+            console.log('FCM Service Worker registered:', registration);
           })
           .catch(function (err) {
             console.warn('FCM SW registration failed:', err);
           });
       }
 
-      return messaging;
+      return messagingInstance;
     } catch (e) {
       console.warn('Firebase init failed:', e);
       return null;
@@ -76,13 +85,17 @@
 
     Notification.requestPermission().then(function (permission) {
       if (permission === 'granted') {
-        messaging.getToken({ vapidKey: config.vapidKey })
+        var getTokenOptions = { vapidKey: config.vapidKey };
+        if (swRegistration) getTokenOptions.serviceWorkerRegistration = swRegistration;
+
+        messaging.getToken(getTokenOptions)
           .then(function (token) {
             if (token) {
               console.log('FCM Token:', token);
               localStorage.setItem('chayabrito-fcm-subscribed', 'true');
               localStorage.setItem('chayabrito-fcm-token', token);
               updateUI();
+              saveTokenToFirestore(token);
             }
           })
           .catch(function (err) {
@@ -96,11 +109,50 @@
 
   function toggleSubscription() {
     if (isSubscribed()) {
+      var token = localStorage.getItem('chayabrito-fcm-token');
+      // Try to delete token from FCM and Firestore
+      if (token && messagingInstance && typeof messagingInstance.deleteToken === 'function') {
+        messagingInstance.deleteToken(token).catch(function (err) {
+          console.warn('Failed to delete FCM token:', err);
+        });
+      }
+      if (token) removeTokenFromFirestore(token);
       localStorage.removeItem('chayabrito-fcm-subscribed');
       localStorage.removeItem('chayabrito-fcm-token');
       updateUI();
     } else {
       subscribe();
+    }
+  }
+
+  function saveTokenToFirestore(token) {
+    if (!firestoreInstance) return;
+    try {
+      firestoreInstance.collection('fcm_tokens').doc(token).set({
+        token: token,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        userAgent: navigator.userAgent || '',
+        projectId: config.projectId || ''
+      }).then(function () {
+        console.log('Saved FCM token to Firestore');
+      }).catch(function (err) {
+        console.warn('Failed to save token to Firestore:', err);
+      });
+    } catch (e) {
+      console.warn('Firestore save error:', e);
+    }
+  }
+
+  function removeTokenFromFirestore(token) {
+    if (!firestoreInstance) return;
+    try {
+      firestoreInstance.collection('fcm_tokens').doc(token).delete().then(function () {
+        console.log('Removed FCM token from Firestore');
+      }).catch(function (err) {
+        console.warn('Failed to remove token from Firestore:', err);
+      });
+    } catch (e) {
+      console.warn('Firestore delete error:', e);
     }
   }
 

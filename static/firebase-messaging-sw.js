@@ -6,14 +6,18 @@
 importScripts('https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/10.12.0/firebase-messaging-compat.js');
 
-firebase.initializeApp({
-  apiKey: 'YOUR_FIREBASE_API_KEY',
-  authDomain: 'YOUR_PROJECT.firebaseapp.com',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_PROJECT.appspot.com',
-  messagingSenderId: 'YOUR_SENDER_ID',
-  appId: 'YOUR_APP_ID'
-});
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBCFotnMTyJbOCDVJhVBxQzD1NFnebXBnk",
+  authDomain: "chayabrito-magazine.firebaseapp.com",
+  projectId: "chayabrito-magazine",
+  storageBucket: "chayabrito-magazine.firebasestorage.app",
+  messagingSenderId: "981536754689",
+  appId: "1:981536754689:web:23785028c7dbcdc79e0400",
+  measurementId: "G-55QLJ078HT"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 const messaging = firebase.messaging();
 

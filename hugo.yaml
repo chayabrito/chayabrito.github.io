@@ -128,13 +128,14 @@ params:
     google: "G-XXXXXXXXXX"
 
   firebase:
-    apiKey: "YOUR_FIREBASE_API_KEY"
-    authDomain: "YOUR_PROJECT.firebaseapp.com"
-    projectId: "YOUR_PROJECT_ID"
-    storageBucket: "YOUR_PROJECT.appspot.com"
-    messagingSenderId: "YOUR_SENDER_ID"
-    appId: "YOUR_APP_ID"
-    vapidKey: "YOUR_VAPID_KEY"
+    apiKey: "AIzaSyBCFotnMTyJbOCDVJhVBxQzD1NFnebXBnk"
+    authDomain: "chayabrito-magazine.firebaseapp.com"
+    projectId: "chayabrito-magazine"
+    storageBucket: "chayabrito-magazine.firebasestorage.app"
+    messagingSenderId: "981536754689"
+    appId: "1:981536754689:web:23785028c7dbcdc79e0400"
+    measurementId: "G-55QLJ078HT"
+    vapidKey: "BOdxLGhYshj61Uo-nSR06HL8aHKIzLEyzLXz1eNPcw1Svac4fs4PLwJxhenIYKS7GA5qXeCwmPjlBsuJCM9pAN0"
 
   categoryMap:
     kobita: "কবিতা"

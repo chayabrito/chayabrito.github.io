@@ -22,7 +22,7 @@
   function loadSearchIndex(callback) {
     if (searchLoaded) { callback(); return; }
 
-    var baseURL = (window.PATANGA && window.PATANGA.baseURL) || '/';
+    var baseURL = (window.CHAYABRITO && window.CHAYABRITO.baseURL) || '/';
     var indexURL = baseURL + 'search-index.json';
 
     fetch(indexURL)

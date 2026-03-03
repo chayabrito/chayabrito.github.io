@@ -2,10 +2,9 @@
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js" defer></script>
 
 {{/* Firebase SDK for notifications */}}
-{{ if hugo.IsProduction }}
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-messaging-compat.js" defer></script>
-{{ end }}
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js" defer></script>
 
 {{/* Main JS */}}
 {{ $mainJS := resources.Get "js/main.js" }}
@@ -30,7 +29,7 @@
 
 {{/* Pass site data to JS */}}
 <script>
-  window.PATANGA = {
+  window.CHAYABRITO = {
     baseURL: {{ .Site.BaseURL }},
     firebase: {
       apiKey: {{ .Site.Params.firebase.apiKey }},
