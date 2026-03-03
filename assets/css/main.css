@@ -72,11 +72,12 @@
 
 /* Dark Theme */
 [data-theme="dark"] {
-  --color-primary: #D06090;
-  --color-primary-light: #E080A8;
-  --color-primary-dark: #B04878;
-  --color-secondary: #D4AA5A;
-  --color-accent: #4ABBA8;
+  --color-primary: #2E7D6F;
+  --color-primary-light: #3A9B8A;
+  --color-primary-dark: #1F5C52;
+  --color-secondary: #C5963A;
+  --color-accent: #8B2252;
+  --color-accent-light: #A83279;
 
   --color-bg: #161210;
   --color-bg-alt: #221C18;
