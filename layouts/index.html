@@ -3,62 +3,131 @@
 {{/* Hero / Featured Articles Carousel */}}
 {{ partial "hero.html" . }}
 
-{{/* Recent Articles Section */}}
-<section class="section section--recent" aria-label="সাম্প্রতিক লেখা">
+{{/* Homepage Two-Column Layout */}}
+<div class="homepage-layout">
   <div class="container">
-    <h2 class="section-title">সাম্প্রতিক লেখা</h2>
-    <div class="article-grid" id="recent-articles">
-      {{ $articles := where .Site.RegularPages "Section" "articles" }}
-      {{ range first 9 $articles }}
-        {{ partial "article-card.html" . }}
-      {{ end }}
-    </div>
-    {{ if gt (len $articles) 9 }}
-    <div class="section-more">
-      <a href="{{ "articles/" | relURL }}" class="btn btn--outline">সব লেখা দেখুন</a>
-    </div>
-    {{ end }}
-  </div>
-</section>
+    <div class="homepage-layout__grid">
 
-{{/* Category Showcase Section */}}
-<section class="section section--categories" aria-label="বিভাগ অনুযায়ী লেখা">
-  <div class="container">
-    <h2 class="section-title">বিভাগ অনুযায়ী</h2>
-    <div class="category-showcase">
-      {{ $catMap := .Site.Params.categoryMap }}
-      {{ range $slug, $name := $catMap }}
-        {{ $pages := where (where $.Site.RegularPages "Section" "articles") ".Params.categories" "intersect" (slice $slug) }}
-        {{ if gt (len $pages) 0 }}
-        <div class="category-block">
-          <h3 class="category-block__title">
-            <a href="{{ printf "categories/%s/" $slug | relURL }}">{{ $name }}</a>
-          </h3>
-          <div class="category-block__articles">
-            {{ range first 3 $pages }}
-            <article class="mini-card">
-              <a href="{{ .RelPermalink }}">
-                <h4 class="mini-card__title">{{ .Title }}</h4>
-                <div class="mini-card__meta">
-                  {{ with .Params.author }}
-                  {{ $authorPage := $.Site.GetPage (printf "/authors/%s" .) }}
-                  {{ if $authorPage }}
-                  <span>{{ $authorPage.Title }}</span>
-                  {{ end }}
-                  {{ end }}
-                </div>
-              </a>
-            </article>
+      {{/* Main Content — Recent Articles */}}
+      <main class="homepage-main">
+        <section class="section section--recent" aria-label="সাম্প্রতিক লেখা">
+          <h2 class="section-title">সাম্প্রতিক লেখা</h2>
+          <div class="article-grid" id="recent-articles">
+            {{ $articles := where .Site.RegularPages "Section" "articles" }}
+            {{ range first 9 $articles }}
+              {{ partial "article-card.html" . }}
             {{ end }}
           </div>
-          {{ if gt (len $pages) 3 }}
-          <a href="{{ printf "categories/%s/" $slug | relURL }}" class="category-block__more">আরও দেখুন →</a>
+          {{ if gt (len $articles) 9 }}
+          <div class="section-more">
+            <a href="{{ "articles/" | relURL }}" class="btn btn--outline">সব লেখা দেখুন</a>
+          </div>
           {{ end }}
+        </section>
+      </main>
+
+      {{/* Sidebar */}}
+      <aside class="homepage-sidebar">
+
+        {{/* Category Showcase */}}
+        <div class="sidebar-widget">
+          <h2 class="sidebar-widget__title">বিভাগ অনুযায়ী</h2>
+          <div class="sidebar-categories">
+            {{ $catMap := .Site.Params.categoryMap }}
+            {{ range $slug, $name := $catMap }}
+              {{ $pages := where (where $.Site.RegularPages "Section" "articles") ".Params.categories" "intersect" (slice $slug) }}
+              {{ if gt (len $pages) 0 }}
+              <div class="category-block">
+                <h3 class="category-block__title">
+                  <a href="{{ printf "categories/%s/" $slug | relURL }}">{{ $name }}</a>
+                  <span class="category-block__count">{{ len $pages }}</span>
+                </h3>
+                <div class="category-block__articles">
+                  {{ range first 3 $pages }}
+                  <article class="mini-card">
+                    <a href="{{ .RelPermalink }}">
+                      <h4 class="mini-card__title">{{ .Title }}</h4>
+                      <div class="mini-card__meta">
+                        {{ with .Params.author }}
+                        {{ $authorPage := $.Site.GetPage (printf "/authors/%s" .) }}
+                        {{ if $authorPage }}
+                        <span>{{ $authorPage.Title }}</span>
+                        {{ end }}
+                        {{ end }}
+                      </div>
+                    </a>
+                  </article>
+                  {{ end }}
+                </div>
+                {{ if gt (len $pages) 3 }}
+                <a href="{{ printf "categories/%s/" $slug | relURL }}" class="category-block__more">আরও দেখুন →</a>
+                {{ end }}
+              </div>
+              {{ end }}
+            {{ end }}
+          </div>
         </div>
-        {{ end }}
-      {{ end }}
+
+        {{/* Archive Preview */}}
+        <div class="sidebar-widget">
+          <h2 class="sidebar-widget__title">আর্কাইভ</h2>
+          <div class="sidebar-archive">
+            {{ $archiveArticles := where .Site.RegularPages "Section" "articles" }}
+            {{ range first 1 ($archiveArticles.GroupByDate "2006") }}
+            <div class="sidebar-archive__year">
+              <h3 class="sidebar-archive__year-title">{{ .Key }}</h3>
+              <ul class="sidebar-archive__list">
+                {{ range first 5 .Pages }}
+                <li class="sidebar-archive__item">
+                  <a href="{{ .RelPermalink }}">
+                    <span class="sidebar-archive__item-title">{{ .Title }}</span>
+                    <time class="sidebar-archive__item-date" datetime="{{ .Date.Format "2006-01-02" }}">
+                      {{ .Date.Format "2 Jan" }}
+                    </time>
+                  </a>
+                </li>
+                {{ end }}
+              </ul>
+            </div>
+            {{ end }}
+          </div>
+          <a href="{{ "archive/" | relURL }}" class="sidebar-widget__more">সম্পূর্ণ আর্কাইভ →</a>
+        </div>
+
+        {{/* Author Directory Preview */}}
+        <div class="sidebar-widget">
+          <h2 class="sidebar-widget__title">লেখক পরিচিতি</h2>
+          <div class="sidebar-authors">
+            {{ $authors := where .Site.RegularPages "Section" "authors" }}
+            {{ range first 5 $authors.ByTitle }}
+            <div class="sidebar-author">
+              <a href="{{ .RelPermalink }}" class="sidebar-author__link">
+                <div class="sidebar-author__avatar">
+                  {{ with .Params.photo }}
+                  <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy" decoding="async">
+                  {{ else }}
+                  <div class="sidebar-author__avatar-placeholder">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </div>
+                  {{ end }}
+                </div>
+                <div class="sidebar-author__info">
+                  <span class="sidebar-author__name">{{ .Title }}</span>
+                  {{ $authorSlug := .File.ContentBaseName }}
+                  {{ $count := len (where (where $.Site.RegularPages "Section" "articles") ".Params.author" $authorSlug) }}
+                  <span class="sidebar-author__count">{{ $count }} টি লেখা</span>
+                </div>
+              </a>
+            </div>
+            {{ end }}
+          </div>
+          <a href="{{ "authors/" | relURL }}" class="sidebar-widget__more">সকল লেখক →</a>
+        </div>
+
+      </aside>
+
     </div>
   </div>
-</section>
+</div>
 
 {{ end }}
