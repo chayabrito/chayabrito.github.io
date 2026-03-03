@@ -57,31 +57,38 @@
     </figure>
     {{ end }}
 
-    {{/* Article Content */}}
-    <div class="article-content prose" itemprop="articleBody">
-      {{ .Content }}
+    {{/* Two-column layout: main content left, sidebar right */}}
+    <div class="article-layout">
+
+      <div class="article-main">
+        {{/* Article Content */}}
+        <div class="article-content prose" itemprop="articleBody">
+          {{ .Content }}
+        </div>
+
+        {{/* Tags */}}
+        {{ with .Params.tags }}
+        <div class="article-tags">
+          <span class="article-tags__label">ট্যাগ:</span>
+          {{ range . }}
+          <a href="{{ printf "tags/%s/" . | relURL }}" class="article-tag article-tag--sm">{{ . }}</a>
+          {{ end }}
+        </div>
+        {{ end }}
+
+        {{/* Social Share */}}
+        {{ partial "social-share.html" . }}
+      </div>
+
+      <aside class="article-sidebar">
+        {{/* Author Box */}}
+        {{ partial "author-box.html" . }}
+
+        {{/* Related Articles */}}
+        {{ partial "related-articles.html" . }}
+      </aside>
+
     </div>
-
-    {{/* Tags */}}
-    {{ with .Params.tags }}
-    <div class="article-tags">
-      <span class="article-tags__label">ট্যাগ:</span>
-      {{ range . }}
-      <a href="{{ printf "tags/%s/" . | relURL }}" class="article-tag article-tag--sm">{{ . }}</a>
-      {{ end }}
-    </div>
-    {{ end }}
-
-    {{/* Social Share */}}
-    {{ partial "social-share.html" . }}
-
-    <hr class="article-divider">
-
-    {{/* Author Box */}}
-    {{ partial "author-box.html" . }}
-
-    {{/* Related Articles */}}
-    {{ partial "related-articles.html" . }}
 
   </div>
 </article>
