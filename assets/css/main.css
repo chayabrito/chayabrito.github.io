@@ -1900,8 +1900,8 @@ h4 { font-size: var(--font-size-lg); }
     position: fixed;
     top: var(--header-height);
     right: 0;
-    bottom: 0;
     width: 280px;
+    max-height: calc(100dvh - var(--header-height));
     background: var(--color-surface);
     border-right: 1px solid var(--color-border);
     flex-direction: column;
