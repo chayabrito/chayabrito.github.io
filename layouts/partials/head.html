@@ -16,14 +16,14 @@
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:site_name" content="{{ .Site.Title }}">
-{{ with .Params.image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+{{ if .IsHome }}<meta property="og:image" content="{{ "/images/cover.jpg" | absURL }}">{{ else }}{{ with .Params.image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}{{ end }}
 <meta property="og:locale" content="bn_BD">
 
 {{/* Twitter Card */}}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ .Title | default .Site.Title }}">
 <meta name="twitter:description" content="{{ with .Params.excerpt }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-{{ with .Params.image }}<meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
+{{ if .IsHome }}<meta name="twitter:image" content="{{ "/images/cover.jpg" | absURL }}">{{ else }}{{ with .Params.image }}<meta name="twitter:image" content="{{ . | absURL }}">{{ end }}{{ end }}
 
 {{/* Canonical URL */}}
 <link rel="canonical" href="{{ .Permalink }}">
