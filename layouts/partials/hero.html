@@ -10,14 +10,14 @@
       <div class="carousel-track" id="carousel-track">
         {{ range $i, $page := $featured }}
         <div class="carousel-slide{{ if eq $i 0 }} is-active{{ end }}" data-index="{{ $i }}">
-          <h2 class="carousel-slide__title">
-            <a href="{{ $page.RelPermalink }}">{{ $page.Title }}{{ with $page.Params.author }}{{ $authorPage := $.Site.GetPage (printf "/authors/%s" .) }}{{ if $authorPage }} ।। {{ $authorPage.Title }}{{ end }}{{ end }}</a>
-          </h2>
           {{ with $page.Params.image }}
           <a href="{{ $page.RelPermalink }}" class="carousel-slide__image">
             <img src="{{ . | relURL }}" alt="{{ $page.Title }}" loading="{{ if eq $i 0 }}eager{{ else }}lazy{{ end }}" decoding="async">
           </a>
           {{ end }}
+          <h2 class="carousel-slide__title">
+            <a href="{{ $page.RelPermalink }}">{{ $page.Title }}{{ with $page.Params.author }}{{ $authorPage := $.Site.GetPage (printf "/authors/%s" .) }}{{ if $authorPage }} ।। {{ $authorPage.Title }}{{ end }}{{ end }}</a>
+          </h2>
         </div>
         {{ end }}
       </div>

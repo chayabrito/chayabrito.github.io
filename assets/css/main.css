@@ -765,7 +765,8 @@ h4 { font-size: var(--font-size-lg); }
 .carousel-slide__title {
   font-size: var(--font-size-2xl);
   font-weight: 700;
-  margin-bottom: var(--space-lg);
+  margin-top: var(--space-lg);
+  margin-bottom: 0;
   line-height: var(--line-height-tight);
 }
 
@@ -782,6 +783,7 @@ h4 { font-size: var(--font-size-lg); }
   display: block;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
+  margin-bottom: var(--space-md);
 }
 
 .carousel-slide__image img {
@@ -1202,6 +1204,11 @@ h4 { font-size: var(--font-size-lg); }
 }
 
 .article-sidebar .more-by-author {
+  margin-top: var(--space-lg);
+}
+
+.more-by-author__footer {
+  text-align: center;
   margin-top: var(--space-lg);
 }
 
@@ -2007,6 +2014,8 @@ h4 { font-size: var(--font-size-lg); }
 
   .carousel-slide__title {
     font-size: var(--font-size-xl);
+    margin-top: var(--space-md);
+    margin-bottom: 0;
   }
 
   /* Grid adjustments */

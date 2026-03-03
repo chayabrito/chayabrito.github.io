@@ -11,6 +11,7 @@
   {{ end }}
 {{ end }}
 
+{{ $totalCount := len $byAuthor }}
 {{ $byAuthor = first 4 $byAuthor }}
 
 {{ if gt (len $byAuthor) 0 }}
@@ -22,5 +23,10 @@
       {{ partial "article-card.html" . }}
     {{ end }}
   </div>
+  {{ if and $authorPage (gt $totalCount 4) }}
+  <div class="more-by-author__footer">
+    <a href="{{ $authorPage.RelPermalink }}" class="btn btn--outline">সব লেখা দেখুন</a>
+  </div>
+  {{ end }}
 </section>
 {{ end }}
