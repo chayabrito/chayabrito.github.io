@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const carousel = document.getElementById('hero-carousel');
   if (carousel) {
     const slides = carousel.querySelectorAll('.carousel-slide');
-    const dots = carousel.querySelectorAll('.carousel-dot');
+    const sidebarItems = carousel.querySelectorAll('.hero-sidebar__item');
     const prevBtn = document.getElementById('carousel-prev');
     const nextBtn = document.getElementById('carousel-next');
     let currentIndex = 0;
@@ -87,10 +87,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function goToSlide(index) {
       slides.forEach(function (s) { s.classList.remove('is-active'); });
-      dots.forEach(function (d) { d.classList.remove('is-active'); });
+      sidebarItems.forEach(function (d) { d.classList.remove('is-active'); });
       currentIndex = (index + slides.length) % slides.length;
       slides[currentIndex].classList.add('is-active');
-      if (dots[currentIndex]) dots[currentIndex].classList.add('is-active');
+      if (sidebarItems[currentIndex]) sidebarItems[currentIndex].classList.add('is-active');
     }
 
     function nextSlide() { goToSlide(currentIndex + 1); }
@@ -98,8 +98,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (prevBtn) prevBtn.addEventListener('click', function () { prevSlide(); resetAutoplay(); });
     if (nextBtn) nextBtn.addEventListener('click', function () { nextSlide(); resetAutoplay(); });
-    dots.forEach(function (dot) {
-      dot.addEventListener('click', function () {
+    sidebarItems.forEach(function (item) {
+      item.addEventListener('click', function () {
         goToSlide(parseInt(this.dataset.index));
         resetAutoplay();
       });

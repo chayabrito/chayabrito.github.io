@@ -5,7 +5,7 @@ date: 2026-02-28
 author: "tandra-ghosh"
 categories: ["shakkhatkar"]
 tags: ["সাক্ষাৎকার", "কবিতা", "সাহিত্য", "সমকালীন"]
-featured: false
+featured: true
 image: "/images/articles/shakkhatkar.jpg"
 excerpt: "সমকালীন বাংলা কবিতার অন্যতম কণ্ঠস্বর কবি সুব্রত মুখোপাধ্যায়ের সঙ্গে কবিতা, জীবন ও সৃষ্টি নিয়ে আলাপ।"
 seo_title: "কবি সুব্রত মুখোপাধ্যায়ের সাক্ষাৎকার | ছায়াবৃত"
