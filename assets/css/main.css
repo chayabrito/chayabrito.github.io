@@ -1187,6 +1187,10 @@ h4 { font-size: var(--font-size-lg); }
   margin-top: 0;
 }
 
+.article-sidebar .more-by-author {
+  margin-top: var(--space-lg);
+}
+
 .article-sidebar .related-articles {
   margin-top: var(--space-lg);
 }

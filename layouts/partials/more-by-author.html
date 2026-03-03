@@ -1,0 +1,26 @@
+{{/* More by author - matches articles by the same author */}}
+{{ $page := . }}
+{{ $authorSlug := .Params.author }}
+{{ $byAuthor := slice }}
+
+{{ if $authorSlug }}
+  {{ range where $page.Site.RegularPages "Section" "articles" }}
+    {{ if and (ne .File.UniqueID $page.File.UniqueID) (eq .Params.author $authorSlug) }}
+      {{ $byAuthor = $byAuthor | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $byAuthor = first 4 $byAuthor }}
+
+{{ if gt (len $byAuthor) 0 }}
+{{ $authorPage := $page.Site.GetPage (printf "/authors/%s" $authorSlug) }}
+<section class="more-by-author" aria-label="লেখকের আরও লেখা">
+  <h2 class="section-title">{{ with $authorPage }}{{ .Title }}-এর আরও লেখা{{ else }}লেখকের আরও লেখা{{ end }}</h2>
+  <div class="article-grid article-grid--compact">
+    {{ range $byAuthor }}
+      {{ partial "article-card.html" . }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}
