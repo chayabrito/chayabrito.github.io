@@ -30,7 +30,7 @@
       <aside class="homepage-sidebar">
 
         {{/* Category Showcase */}}
-        <div class="sidebar-widget">
+        <div class="sidebar-widget sidebar-widget--categories">
           <h2 class="sidebar-widget__title">বিভাগ অনুযায়ী</h2>
           <div class="sidebar-categories">
             {{ $catMap := .Site.Params.categoryMap }}
@@ -43,7 +43,7 @@
                   <span class="category-block__count">{{ len $pages }}</span>
                 </h3>
                 <div class="category-block__articles">
-                  {{ range first 3 $pages }}
+                  {{ range first 2 $pages }}
                   <article class="mini-card">
                     <a href="{{ .RelPermalink }}">
                       <h4 class="mini-card__title">{{ .Title }}</h4>

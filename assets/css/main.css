@@ -1105,7 +1105,7 @@ h4 { font-size: var(--font-size-lg); }
 .homepage-sidebar {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
   position: sticky;
   top: calc(var(--header-height) + var(--space-xl));
 }
@@ -1113,7 +1113,7 @@ h4 { font-size: var(--font-size-lg); }
 .sidebar-widget {
   background: var(--color-bg-card);
   border-radius: var(--border-radius-lg);
-  padding: var(--space-xl);
+  padding: var(--space-lg);
   box-shadow: var(--shadow-sm);
 }
 
@@ -1141,21 +1141,30 @@ h4 { font-size: var(--font-size-lg); }
 
 /* Sidebar categories — stacked single column */
 .sidebar-categories .category-block {
-  margin-bottom: var(--space-lg);
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border-light);
+  padding-bottom: var(--space-md);
 }
 
 .sidebar-categories .category-block:last-child {
   margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .sidebar-categories .category-block__title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: var(--font-size-base);
-  margin-bottom: var(--space-md);
-  padding-bottom: var(--space-xs);
-  border-bottom: 1px solid var(--color-border-light);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .sidebar-categories .category-block__title a {
@@ -1172,21 +1181,34 @@ h4 { font-size: var(--font-size-lg); }
   font-weight: 600;
   color: var(--color-text-lighter);
   background: var(--color-bg-alt);
-  padding: 2px 8px;
+  padding: 1px 6px;
   border-radius: 99px;
+}
+
+.sidebar-categories .category-block__articles {
+  gap: 0;
 }
 
 .sidebar-categories .mini-card__title {
   font-size: var(--font-size-sm);
+  margin-bottom: 1px;
+}
+
+.sidebar-categories .mini-card__meta {
+  font-size: 0.7rem;
 }
 
 .sidebar-categories .mini-card a {
-  padding: var(--space-xs) 0;
+  padding: 3px 0;
+}
+
+.sidebar-categories .mini-card:last-child a {
+  border-bottom: none;
 }
 
 .sidebar-categories .category-block__more {
   font-size: var(--font-size-xs);
-  margin-top: var(--space-sm);
+  margin-top: var(--space-xs);
 }
 
 /* Sidebar archive */
@@ -2253,6 +2275,10 @@ h4 { font-size: var(--font-size-lg); }
 
   .homepage-sidebar {
     position: static;
+  }
+
+  .sidebar-widget--categories {
+    display: none;
   }
 
   /* Grid adjustments */
