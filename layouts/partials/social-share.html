@@ -1,7 +1,6 @@
 {{/* Social share buttons */}}
-{{ $title := .Title | urlquery }}
-{{ $url := .Permalink | urlquery }}
-{{ $excerpt := .Params.excerpt | default "" | urlquery }}
+{{ $title := .Title }}
+{{ $url := .Permalink }}
 
 <div class="social-share" aria-label="শেয়ার করুন">
   <span class="social-share__label">শেয়ার করুন:</span>
