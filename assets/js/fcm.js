@@ -23,13 +23,23 @@
     return localStorage.getItem('chayabrito-fcm-subscribed') === 'true';
   }
 
+  function setBellState(state) {
+    if (bellBtn) bellBtn.setAttribute('data-state', state);
+  }
+
   function updateUI() {
     if (isSubscribed()) {
-      if (bellBtn) bellBtn.title = 'বিজ্ঞপ্তি চালু আছে';
+      if (bellBtn) {
+        bellBtn.title = 'বিজ্ঞপ্তি চালু আছে';
+        setBellState('subscribed');
+      }
       if (notifDot) notifDot.removeAttribute('hidden');
       if (footerBtn) footerBtn.textContent = 'বিজ্ঞপ্তি চালু আছে ✓';
     } else {
-      if (bellBtn) bellBtn.title = 'বিজ্ঞপ্তি সাবস্ক্রাইব করুন';
+      if (bellBtn) {
+        bellBtn.title = 'বিজ্ঞপ্তি সাবস্ক্রাইব করুন';
+        setBellState('idle');
+      }
       if (notifDot) notifDot.setAttribute('hidden', '');
       if (footerBtn) footerBtn.textContent = 'বিজ্ঞপ্তি চালু করুন';
     }
@@ -79,11 +89,16 @@
   function subscribe() {
     var messaging = initFirebase();
     if (!messaging) {
-      alert('বিজ্ঞপ্তি সেবা বর্তমানে অনুপলব্ধ।');
+      setBellState('error');
+      setTimeout(function () { updateUI(); }, 3000);
       return;
     }
 
+    setBellState('loading');
+    if (bellBtn) bellBtn.disabled = true;
+
     Notification.requestPermission().then(function (permission) {
+      if (bellBtn) bellBtn.disabled = false;
       if (permission === 'granted') {
         var getTokenOptions = { vapidKey: config.vapidKey };
         if (swRegistration) getTokenOptions.serviceWorkerRegistration = swRegistration;
@@ -96,13 +111,19 @@
               localStorage.setItem('chayabrito-fcm-token', token);
               updateUI();
               saveTokenToFirestore(token);
+            } else {
+              setBellState('error');
+              setTimeout(function () { updateUI(); }, 3000);
             }
           })
           .catch(function (err) {
             console.warn('FCM token error:', err);
+            setBellState('error');
+            setTimeout(function () { updateUI(); }, 3000);
           });
       } else {
-        alert('বিজ্ঞপ্তির অনুমতি প্রয়োজন। ব্রাউজার সেটিংস থেকে অনুমতি দিন।');
+        setBellState('error');
+        setTimeout(function () { updateUI(); }, 3000);
       }
     });
   }
