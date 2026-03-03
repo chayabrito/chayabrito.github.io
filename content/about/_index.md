@@ -28,7 +28,7 @@ layout: "list"
 
 ### লেখা পাঠান
 
-আপনি যদি ছায়াবৃত পত্রিকায় লেখা পাঠাতে চান, তাহলে আপনার লেখা ইমেইল করুন: **chayabrito@example.com**
+আপনি যদি ছায়াবৃত পত্রিকায় লেখা পাঠাতে চান, তাহলে আপনার লেখা ইমেইল করুন: **chayabrito.magazine@gmail.com**
 
 লেখা পাঠানোর নিয়মাবলী:
 1. লেখা অবশ্যই মৌলিক হতে হবে
@@ -39,10 +39,8 @@ layout: "list"
 
 ### যোগাযোগ
 
-- **ইমেইল:** chayabrito@example.com
+- **ইমেইল:** chayabrito.magazine@gmail.com
 - **ফেসবুক:** [facebook.com/chayabrito](https://facebook.com/chayabrito)
-- **টুইটার/এক্স:** [twitter.com/chayabrito](https://twitter.com/chayabrito)
-- **ইনস্টাগ্রাম:** [instagram.com/chayabrito](https://instagram.com/chayabrito)
 
 ### কৃতজ্ঞতা
 

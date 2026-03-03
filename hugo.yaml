@@ -137,6 +137,11 @@ params:
     measurementId: "G-55QLJ078HT"
     vapidKey: "BOdxLGhYshj61Uo-nSR06HL8aHKIzLEyzLXz1eNPcw1Svac4fs4PLwJxhenIYKS7GA5qXeCwmPjlBsuJCM9pAN0"
 
+  editor:
+    name: "মোঃ আনোয়ার হোসেন মল্লিক"
+    email: "anwarmollik111@gmail.com"
+    image: "/images/editor/anwar-mollik.jpg"
+
   categoryMap:
     kobita: "কবিতা"
     golpo: "গল্প"

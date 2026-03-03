@@ -59,9 +59,9 @@
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <p>{{ .Site.Copyright | default (printf "© %d ছায়াবৃত। সর্বস্বত্ব সংরক্ষিত।" now.Year) }}</p>
-      <p class="footer-credit">হুগো দিয়ে তৈরি। গিটহাব পেজেসে হোস্টেড।</p>
+    <div class="footer-bottom">      {{ with .Site.Params.editor }}
+      <p class="footer-editor">সম্পাদক: <strong>{{ .name }}</strong> &mdash; <a href="mailto:{{ .email }}">{{ .email }}</a></p>
+      {{ end }}      <p>{{ .Site.Copyright | default (printf "© %d ছায়াবৃত। সর্বস্বত্ব সংরক্ষিত।" now.Year) }}</p>
     </div>
   </div>
 </footer>
