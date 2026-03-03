@@ -99,7 +99,7 @@
 @font-face {
   font-family: 'Li Priyasha Bharot Unicode';
   /* encode spaces in filename to avoid URL issues */
-  src: url('/fonts/Li%20Priyasha%20Bharot%20Unicode.ttf') format('truetype');
+  src: url('/fonts/Li-Priyasha-Bharot-Unicode.ttf') format('truetype');
   font-weight: 400 900;
   font-style: normal;
   font-display: swap;
