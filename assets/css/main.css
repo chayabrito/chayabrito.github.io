@@ -2558,6 +2558,92 @@ h4 { font-size: var(--font-size-lg); }
   font-weight: 700;
 }
 
+/* ── Comments (Disqus) ──────────────────────────────────── */
+.comments-section {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 2px solid var(--color-border);
+}
+
+.comments-section__header {
+  margin-bottom: var(--space-lg);
+}
+
+.comments-section__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+  padding-bottom: var(--space-sm);
+  border-bottom: 3px solid var(--color-primary);
+  width: fit-content;
+}
+
+.comments-section__icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.comments-section__body {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.comments-section__thread {
+  min-height: 120px;
+}
+
+/* Skeleton placeholder shown while Disqus loads */
+.comments-section__placeholder {
+  padding: var(--space-md) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.comments-section__placeholder-bar {
+  height: 14px;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 25%,
+    var(--color-border-light) 50%,
+    var(--color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: comments-shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes comments-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.comments-section__noscript {
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+.comments-section__noscript a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .comments-section__body {
+    padding: var(--space-md);
+  }
+}
+
 /* ── Utilities ───────────────────────────────────────────── */
 .sr-only {
   position: absolute;

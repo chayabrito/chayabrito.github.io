@@ -142,6 +142,8 @@ params:
     email: "anwarmollik111@gmail.com"
     image: "/images/editor/anwar-mollik.jpg"
 
+  disqusShortname: "chayabrito"
+
   categoryMap:
     kobita: "কবিতা"
     golpo: "গল্প"

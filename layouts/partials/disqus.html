@@ -1,0 +1,72 @@
+{{- $shortname := site.Params.disqusShortname -}}
+{{- if $shortname -}}
+<section class="comments-section" id="comments" aria-label="মন্তব্য">
+
+  <div class="comments-section__header">
+    <h2 class="comments-section__title">
+      <svg class="comments-section__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      মন্তব্য
+    </h2>
+  </div>
+
+  <div class="comments-section__body">
+    <div id="disqus_thread" class="comments-section__thread">
+      <div class="comments-section__placeholder" aria-hidden="true">
+        <div class="comments-section__placeholder-bar" style="width:60%"></div>
+        <div class="comments-section__placeholder-bar" style="width:80%"></div>
+        <div class="comments-section__placeholder-bar" style="width:45%"></div>
+      </div>
+    </div>
+    <noscript>
+      <p class="comments-section__noscript">
+        মন্তব্য দেখতে জাভাস্ক্রিপ্ট সক্রিয় করুন।
+        <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener noreferrer">Disqus-এর মাধ্যমে পরিচালিত।</a>
+      </p>
+    </noscript>
+  </div>
+
+</section>
+
+<script>
+(function () {
+  'use strict';
+  var disqusLoaded = false;
+  var thread = document.getElementById('disqus_thread');
+  if (!thread) return;
+
+  function loadDisqus() {
+    if (disqusLoaded) return;
+    disqusLoaded = true;
+
+    /* Remove skeleton placeholder once Disqus loads */
+    var placeholder = thread.querySelector('.comments-section__placeholder');
+    if (placeholder) placeholder.remove();
+
+    window.disqus_config = function () {
+      this.page.url        = {{ .Permalink | jsonify }};
+      this.page.identifier = {{ .RelPermalink | jsonify }};
+    };
+
+    var d = document, s = d.createElement('script');
+    s.src = 'https://{{ $shortname }}.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    s.async = true;
+    (d.head || d.body).appendChild(s);
+  }
+
+  /* Lazy-load: fire only when the thread enters the viewport (+200 px margin) */
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        loadDisqus();
+        observer.disconnect();
+      }
+    }, { rootMargin: '200px 0px' });
+    observer.observe(thread);
+  } else {
+    /* Fallback for older browsers */
+    loadDisqus();
+  }
+})();
+</script>
+{{- end -}}
