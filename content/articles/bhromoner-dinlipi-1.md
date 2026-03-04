@@ -2,7 +2,7 @@
 title: "ভ্রমণের দিনলিপি — পর্ব ১: শ্রীমঙ্গলে তিনদিন"
 slug: "bhromoner-dinlipi-1"
 date: 2026-01-20
-author: "animesh-das"
+author: "anisur-rahman"
 categories: ["dharabahik"]
 tags: ["ধারাবাহিক", "ভ্রমণ", "শ্রীমঙ্গল", "দিনলিপি"]
 featured: false

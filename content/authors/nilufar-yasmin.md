@@ -1,9 +1,9 @@
 ---
 title: "নীলুফার ইয়াসমীন"
-slug: "nilanjana-roy"
+slug: "nilufar-yasmin"
 date: 2025-01-01
 bio: "গল্পকার ও সাহিত্য সমালোচক। পর্যালোচনা, পাঠসূত্র ও ছোটগল্প তাঁর প্রধান কাজের ক্ষেত্র। একাধিক সাহিত্য পুরস্কারে সম্মানিত। বর্তমানে একটি প্রকাশনা সংস্থায় সম্পাদক।"
-photo: "/images/authors/nilanjana-roy.jpg"
+photo: "/images/authors/nilufar-yasmin.jpg"
 social:
   twitter: "https://twitter.com/nilanjana_roy"
   facebook: "https://facebook.com/nilanjana.roy.writer"

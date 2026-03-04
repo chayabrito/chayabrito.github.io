@@ -2,7 +2,7 @@
 title: "কবি জাহিদ হায়দারের সঙ্গে কথোপকথন"
 slug: "sahityik-shakkhatkar"
 date: 2026-02-28
-author: "tandra-ghosh"
+author: "taniya-ahmed"
 categories: ["shakkhatkar"]
 tags: ["সাক্ষাৎকার", "কবিতা", "সাহিত্য", "সমকালীন"]
 featured: true

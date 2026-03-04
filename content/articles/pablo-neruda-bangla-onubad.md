@@ -2,7 +2,7 @@
 title: "পাবলো নেরুদার কবিতা: বাংলা অনুবাদ"
 slug: "pablo-neruda-bangla-onubad"
 date: 2026-01-10
-author: "priyanka-sen"
+author: "purabi-basu"
 categories: ["onubad"]
 tags: ["অনুবাদ", "নেরুদা", "স্প্যানিশ কবিতা", "প্রেম"]
 featured: true

@@ -2,7 +2,7 @@
 title: "পুরনো ডায়েরির পাতা"
 slug: "purono-diary-er-pata"
 date: 2026-01-28
-author: "nilanjana-roy"
+author: "nilufar-yasmin"
 categories: ["golpo"]
 tags: ["গল্প", "ডায়েরি", "প্রেম", "চিঠি"]
 featured: false

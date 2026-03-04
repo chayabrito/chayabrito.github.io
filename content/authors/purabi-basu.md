@@ -1,9 +1,9 @@
 ---
 title: "পূরবী বসু"
-slug: "priyanka-sen"
+slug: "purabi-basu"
 date: 2025-01-01
 bio: "কবি ও অনুবাদক। স্প্যানিশ, ফরাসি ও ইংরেজি থেকে বাংলায় কবিতা অনুবাদ করেন। তাঁর মূল কবিতায় প্রকৃতি ও প্রেম প্রধান অনুষঙ্গ। ঢাকা বিশ্ববিদ্যালয়ে তুলনামূলক সাহিত্যের অধ্যাপক।"
-photo: "/images/authors/priyanka-sen.jpg"
+photo: "/images/authors/purabi-basu.jpg"
 social:
   twitter: "https://twitter.com/priyanka_sen"
   instagram: "https://instagram.com/priyankasen.poetry"

@@ -1,9 +1,9 @@
 ---
 title: "আনিসুর রহমান"
-slug: "animesh-das"
+slug: "anisur-rahman"
 date: 2025-01-01
 bio: "কবি ও ভ্রমণ লেখক। ঢাকায় জন্ম ও বেড়ে ওঠা। প্রকৃতি, যাত্রা ও আধ্যাত্মিকতা তাঁর লেখার প্রধান বিষয়। প্রকাশিত কাব্যগ্রন্থ 'আলোর পথে' ও 'নদীর ভাষা'। পেশায় স্কুলশিক্ষক, নেশায় পর্যটক।"
-photo: "/images/authors/animesh-das.jpg"
+photo: "/images/authors/anisur-rahman.jpg"
 social:
   facebook: "https://facebook.com/animesh.das"
   twitter: "https://twitter.com/animeshdas"

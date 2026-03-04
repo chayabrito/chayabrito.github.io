@@ -1,9 +1,9 @@
 ---
 title: "তানিয়া আহমেদ"
-slug: "tandra-ghosh"
+slug: "taniya-ahmed"
 date: 2025-01-01
 bio: "সাংবাদিক, ছড়াকার ও সাক্ষাৎকার-গ্রাহক। শিশুসাহিত্য ও সাংস্কৃতিক সাংবাদিকতায় বিশেষ পারদর্শী। কবিতা, ছড়া ও সাক্ষাৎকার — তিনটি ক্ষেত্রেই সমান দক্ষ।"
-photo: "/images/authors/tandra-ghosh.jpg"
+photo: "/images/authors/taniya-ahmed.jpg"
 social:
   instagram: "https://instagram.com/tandra.ghosh"
   twitter: "https://twitter.com/tandra_ghosh"

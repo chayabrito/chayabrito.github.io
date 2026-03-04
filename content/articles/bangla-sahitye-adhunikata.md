@@ -2,7 +2,7 @@
 title: "বাংলা সাহিত্যে আধুনিকতা"
 slug: "bangla-sahitye-adhunikata"
 date: 2026-03-03
-author: "debashis-mukhopadhyay"
+author: "kabir-ahmed"
 categories: ["probondho"]
 tags: ["প্রবন্ধ", "আধুনিকতা", "সাহিত্য", "সমালোচনা"]
 featured: false

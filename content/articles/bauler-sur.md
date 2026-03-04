@@ -2,7 +2,7 @@
 title: "বাউলের সুর"
 slug: "bauler-sur"
 date: 2026-02-05
-author: "animesh-das"
+author: "anisur-rahman"
 categories: ["gaan"]
 tags: ["গান", "বাউল", "লোকসংগীত", "আধ্যাত্মিকতা"]
 featured: false

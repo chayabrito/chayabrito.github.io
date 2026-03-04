@@ -2,7 +2,7 @@
 title: "রঙের খেলা"
 slug: "ronger-khela"
 date: 2026-03-01
-author: "tandra-ghosh"
+author: "taniya-ahmed"
 categories: ["chora"]
 tags: ["ছড়া", "শিশু", "রং", "আনন্দ"]
 featured: false

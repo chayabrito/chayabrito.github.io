@@ -2,7 +2,7 @@
 title: "বইয়ের জগতে: ২০২৫-এর সেরা বাংলা বই"
 slug: "boiyer-jogote-2025"
 date: 2025-12-30
-author: "nilanjana-roy"
+author: "nilufar-yasmin"
 categories: ["pathosutro"]
 tags: ["পাঠসূত্র", "বই", "পর্যালোচনা", "২০২৫"]
 featured: false

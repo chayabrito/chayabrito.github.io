@@ -1,9 +1,9 @@
 ---
 title: "শামীমা আখতার"
-slug: "sumitra-chakraborty"
+slug: "shamima-akhter"
 date: 2025-01-01
 bio: "কথাসাহিত্যিক ও মুক্তগদ্য লেখক। মানুষের দৈনন্দিন জীবনের ছোট ছোট মুহূর্ত তাঁর লেখার প্রধান উপজীব্য। তিনটি গল্পগ্রন্থ ও দুটি উপন্যাস প্রকাশিত।"
-photo: "/images/authors/sumitra-chakraborty.jpg"
+photo: "/images/authors/shamima-akhter.jpg"
 social:
   facebook: "https://facebook.com/sumitra.chakraborty"
   email: "sumitra@example.com"

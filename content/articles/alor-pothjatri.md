@@ -2,7 +2,7 @@
 title: "আলোর পথযাত্রী"
 slug: "alor-pothjatri"
 date: 2026-02-28
-author: "animesh-das"
+author: "anisur-rahman"
 categories: ["kobita"]
 tags: ["আলো", "যাত্রা", "আধুনিক কবিতা"]
 featured: true

@@ -2,7 +2,7 @@
 title: "রবীন্দ্রনাথের কাব্যদর্শন"
 slug: "rabindranath-er-kabyadarshan"
 date: 2025-12-20
-author: "debashis-mukhopadhyay"
+author: "kabir-ahmed"
 categories: ["probondho"]
 tags: ["প্রবন্ধ", "রবীন্দ্রনাথ", "কাব্যদর্শন", "সাহিত্য"]
 featured: false

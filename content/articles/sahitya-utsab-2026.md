@@ -2,7 +2,7 @@
 title: "সাহিত্য উৎসব ২০২৬: বইমেলা থেকে কবিতা পাঠ"
 slug: "sahitya-utsab-2026"
 date: 2026-02-20
-author: "tandra-ghosh"
+author: "taniya-ahmed"
 categories: ["songbad"]
 tags: ["সংবাদ", "বইমেলা", "সাহিত্য উৎসব", "ঢাকা"]
 featured: false

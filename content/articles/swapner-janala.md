@@ -2,7 +2,7 @@
 title: "স্বপ্নের জানালা"
 slug: "swapner-janala"
 date: 2026-03-03
-author: "sumitra-chakraborty"
+author: "shamima-akhter"
 categories: ["khola-janala"]
 tags: ["খোলা জানালা", "মুক্তগদ্য", "স্বপ্ন", "জীবন"]
 featured: false

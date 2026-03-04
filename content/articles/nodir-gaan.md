@@ -2,7 +2,7 @@
 title: "নদীর গান"
 slug: "nodir-gaan"
 date: 2026-02-20
-author: "priyanka-sen"
+author: "purabi-basu"
 categories: ["kobita"]
 tags: ["নদী", "প্রকৃতি", "গান"]
 featured: false

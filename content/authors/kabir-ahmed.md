@@ -1,9 +1,9 @@
 ---
 title: "কবির আহমেদ"
-slug: "debashis-mukhopadhyay"
+slug: "kabir-ahmed"
 date: 2025-01-01
 bio: "প্রাবন্ধিক ও সাহিত্য গবেষক। বাংলা সাহিত্যের ইতিহাস, আধুনিকতাবাদ ও উত্তর-ঔপনিবেশিক সাহিত্যতত্ত্ব তাঁর গবেষণার ক্ষেত্র। ঢাকা বিশ্ববিদ্যালয়ে বাংলা বিভাগে অধ্যাপক।"
-photo: "/images/authors/debashis-mukhopadhyay.jpg"
+photo: "/images/authors/kabir-ahmed.jpg"
 social:
   email: "debashis@example.com"
 ---

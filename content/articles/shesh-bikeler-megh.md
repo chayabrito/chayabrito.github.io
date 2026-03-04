@@ -2,7 +2,7 @@
 title: "শেষ বিকেলের মেঘ"
 slug: "shesh-bikeler-megh"
 date: 2026-02-15
-author: "sumitra-chakraborty"
+author: "shamima-akhter"
 categories: ["golpo"]
 tags: ["গল্প", "বিকেল", "স্মৃতি", "নস্টালজিয়া"]
 featured: true
