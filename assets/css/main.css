@@ -2522,6 +2522,43 @@ h4 { font-size: var(--font-size-lg); }
 
 
 /* ---- 27. Utility classes ---- */
+/* ── Demo Notice Banner ─────────────────────────────────── */
+.demo-notice {
+  background-color: #fef9c3;
+  border-bottom: 1px solid #fde047;
+  color: #713f12;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  padding: 0.6rem 0;
+  width: 100%;
+}
+
+[data-theme="dark"] .demo-notice {
+  background-color: #2d1a00;
+  border-bottom-color: #92400e;
+  color: #fde68a;
+}
+
+.demo-notice__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.demo-notice__icon {
+  flex-shrink: 0;
+  margin-top: 0.18rem;
+}
+
+.demo-notice__text {
+  margin: 0;
+}
+
+.demo-notice__text strong {
+  font-weight: 700;
+}
+
+/* ── Utilities ───────────────────────────────────────────── */
 .sr-only {
   position: absolute;
   width: 1px;

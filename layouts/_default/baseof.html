@@ -7,6 +7,15 @@
   {{- partial "reading-progress.html" . -}}
   {{- partial "header.html" . -}}
 
+  <div class="demo-notice" role="alert" aria-live="polite">
+    <div class="container demo-notice__inner">
+      <svg class="demo-notice__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p class="demo-notice__text">
+        <strong>বিজ্ঞপ্তি:</strong> এই ওয়েবসাইটের সকল বিষয়বস্তু বর্তমানে শুধুমাত্র প্রদর্শনীর উদ্দেশ্যে তৈরি। শীঘ্রই প্রকৃত সাহিত্যকর্ম প্রকাশিত হবে। কোনো ব্যক্তি, রচনা বা ঘটনার সাথে সাদৃশ্য সম্পূর্ণ অনিচ্ছাকৃত।
+      </p>
+    </div>
+  </div>
+
   <main id="main-content" role="main">
     {{- block "main" . }}{{- end }}
   </main>
