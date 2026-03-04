@@ -44,6 +44,7 @@
 
     window.disqus_config = function () {
       this.page.url        = {{ .Permalink | jsonify }};
+      this.page.title      = {{ .Title | jsonify }};
       this.page.identifier = {{ .RelPermalink | jsonify }};
     };
 
