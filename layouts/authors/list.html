@@ -31,7 +31,7 @@
           {{ end }}
           {{ $authorSlug := .File.ContentBaseName }}
           {{ $count := len (where (where $.Site.RegularPages "Section" "articles") ".Params.author" $authorSlug) }}
-          <span class="author-card__count">{{ $count }} টি লেখা</span>
+          <span class="author-card__count">{{ $count  | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }} টি লেখা</span>
         </a>
       </div>
       {{ end }}

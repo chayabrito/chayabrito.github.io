@@ -31,14 +31,14 @@
     <div class="archive-list" id="archive-list">
       {{ range (where .Site.RegularPages "Section" "articles").GroupByDate "2006" }}
       <div class="archive-year" data-year="{{ .Key }}">
-        <h2 class="archive-year__title">{{ .Key }}</h2>
+        <h2 class="archive-year__title">{{ .Key  | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }}</h2>
         {{ range .Pages.GroupByDate "January" }}
         <div class="archive-month">
-          <h3 class="archive-month__title">{{ .Key }}</h3>
+          <h3 class="archive-month__title">{{ .Key  | replaceRE "January" "জানুয়ারি" | replaceRE "February" "ফেব্রুয়ারি" | replaceRE "March" "মার্চ" | replaceRE "April" "এপ্রিল" | replaceRE "May" "মে" | replaceRE "June" "জুন" | replaceRE "July" "জুলাই" | replaceRE "August" "আগস্ট" | replaceRE "September" "সেপ্টেম্বর" | replaceRE "October" "অক্টোবর" | replaceRE "November" "নভেম্বর" | replaceRE "December" "ডিসেম্বর" }}</h3>
           <ul class="archive-entries">
             {{ range .Pages }}
             <li class="archive-entry" data-categories="{{ delimit .Params.categories " " }}" data-title="{{ .Title | lower }}" data-author="{{ .Params.author | lower }}">
-              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02" }}</time>
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02"  | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }}</time>
               <a href="{{ .RelPermalink }}">{{ .Title }}</a>
               {{ with .Params.categories }}
               <span class="archive-entry__cat">

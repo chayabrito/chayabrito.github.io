@@ -230,7 +230,7 @@ h4 { font-size: var(--font-size-lg); }
 }
 
 .prose ul { list-style: disc; }
-.prose ol { list-style: decimal; }
+.prose ol { list-style: bengali; }
 
 .prose li {
   margin-bottom: var(--space-sm);

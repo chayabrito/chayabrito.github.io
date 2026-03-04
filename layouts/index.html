@@ -40,7 +40,7 @@
               <div class="category-block">
                 <h3 class="category-block__title">
                   <a href="{{ printf "categories/%s/" $slug | relURL }}">{{ $name }}</a>
-                  <span class="category-block__count">{{ len $pages }}</span>
+                  <span class="category-block__count">{{ len $pages  | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }}</span>
                 </h3>
                 <div class="category-block__articles">
                   {{ range first 2 $pages }}
@@ -75,14 +75,14 @@
             {{ $archiveArticles := where .Site.RegularPages "Section" "articles" }}
             {{ range first 1 ($archiveArticles.GroupByDate "2006") }}
             <div class="sidebar-archive__year">
-              <h3 class="sidebar-archive__year-title">{{ .Key }}</h3>
+              <h3 class="sidebar-archive__year-title">{{ .Key  | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }}</h3>
               <ul class="sidebar-archive__list">
                 {{ range first 5 .Pages }}
                 <li class="sidebar-archive__item">
                   <a href="{{ .RelPermalink }}">
                     <span class="sidebar-archive__item-title">{{ .Title }}</span>
                     <time class="sidebar-archive__item-date" datetime="{{ .Date.Format "2006-01-02" }}">
-                      {{ .Date.Format "2 Jan" }}
+                      {{ .Date.Format "2 January"  | replaceRE "January" "জানুয়ারি" | replaceRE "February" "ফেব্রুয়ারি" | replaceRE "March" "মার্চ" | replaceRE "April" "এপ্রিল" | replaceRE "May" "মে" | replaceRE "June" "জুন" | replaceRE "July" "জুলাই" | replaceRE "August" "আগস্ট" | replaceRE "September" "সেপ্টেম্বর" | replaceRE "October" "অক্টোবর" | replaceRE "November" "নভেম্বর" | replaceRE "December" "ডিসেম্বর"  | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }}
                     </time>
                   </a>
                 </li>
@@ -115,7 +115,7 @@
                   <span class="sidebar-author__name">{{ .Title }}</span>
                   {{ $authorSlug := .File.ContentBaseName }}
                   {{ $count := len (where (where $.Site.RegularPages "Section" "articles") ".Params.author" $authorSlug) }}
-                  <span class="sidebar-author__count">{{ $count }} টি লেখা</span>
+                  <span class="sidebar-author__count">{{ $count  | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }} টি লেখা</span>
                 </div>
               </a>
             </div>

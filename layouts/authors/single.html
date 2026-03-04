@@ -43,7 +43,7 @@
 
     {{ if gt (len $articles) 0 }}
     <section class="author-works" aria-label="এই লেখকের লেখা">
-      <h2 class="section-title">{{ .Title }}-এর লেখা ({{ len $articles }})</h2>
+      <h2 class="section-title">{{ .Title }}-এর লেখা ({{ len $articles | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }})</h2>
       <div class="article-grid">
         {{ range $articles }}
           {{ partial "article-card.html" . }}

@@ -40,7 +40,7 @@
             {{ end }}
           </div>
           <h2 class="category-card__name">{{ $name }}</h2>
-          <span class="category-card__count">{{ len $catPages }} টি লেখা</span>
+          <span class="category-card__count">{{ len $catPages  | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }} টি লেখা</span>
         </a>
       {{ end }}
     </div>
