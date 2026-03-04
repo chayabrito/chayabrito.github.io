@@ -42,7 +42,7 @@
 
         <span class="article-header__readtime">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          {{ .ReadingTime }} মিনিটে পড়া যাবে
+          {{ .ReadingTime | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }} মিনিটে পড়া যাবে
         </span>
       </div>
     </header>

@@ -25,8 +25,9 @@
   --color-border-light: #F0E8DA;
 
   /* Typography */
-  --font-heading: 'Noto Serif Bengali', 'Kalpurush', serif;
-  --font-body: 'Noto Sans Bengali', 'Kalpurush', sans-serif;
+  --font-heading: 'SolaimanLipi', 'Noto Serif Bengali', 'Kalpurush', serif;
+  --font-body: 'SolaimanLipi', 'Noto Sans Bengali', 'Kalpurush', sans-serif;
+  --font-nav: 'Noto Sans', 'Noto Sans Bengali', 'Helvetica Neue', Arial, sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1.0625rem;
@@ -102,6 +103,24 @@
   /* encode spaces in filename to avoid URL issues */
   src: url('/fonts/Li-Priyasha-Bharot-Unicode.ttf') format('truetype');
   font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* SolaimanLipi for sitewide headings and body text */
+@font-face {
+  font-family: 'SolaimanLipi';
+  src: url('/fonts/SolaimanLipi.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Explicit bold face for SolaimanLipi (uses same file until a separate bold file is added) */
+@font-face {
+  font-family: 'SolaimanLipi-Bold';
+  src: url('/fonts/SolaimanLipi-Bold.ttf') format('truetype');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -478,6 +497,7 @@ h4 { font-size: var(--font-size-lg); }
 
 .nav-link {
   display: flex;
+  font-family: var(--font-nav);
   align-items: center;
   gap: 4px;
   padding: var(--space-sm) var(--space-md);
@@ -540,6 +560,7 @@ h4 { font-size: var(--font-size-lg); }
 
 .dropdown-link {
   display: block;
+  font-family: var(--font-nav);
   padding: var(--space-sm) var(--space-md);
   font-size: var(--font-size-sm);
   color: var(--color-text);
@@ -1179,9 +1200,9 @@ h4 { font-size: var(--font-size-lg); }
   box-shadow: none;
   border-radius: 0;
   padding: 0;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
   border-bottom: 1px solid var(--color-border-light);
-  padding-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
 }
 
 .sidebar-categories .category-block:last-child {

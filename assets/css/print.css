@@ -34,6 +34,7 @@
   body {
     color: #000;
     background: #fff;
+    font-family: var(--font-body);
     font-size: 11pt;
     line-height: 1.3;
   }
@@ -77,13 +78,14 @@
   /* Article header styling for print */
   .article-header {
     text-align: left;
-    margin-bottom: 2em;
+    margin-bottom: 0.75em;
     border-bottom: 1px solid #ccc;
-    padding-bottom: 1em;
+    padding-bottom: 0.75em;
   }
 
   .article-header__title {
     font-size: 24pt;
+    margin-top: 1em;
   }
 
   .article-header__meta {
