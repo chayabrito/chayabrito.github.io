@@ -47,20 +47,20 @@
       </div>
     </header>
 
-    {{/* Featured Image */}}
-    {{ with .Params.image }}
-    <figure class="article-hero-image">
-      <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="eager" decoding="async" itemprop="image">
-      {{ with $.Params.image_caption }}
-      <figcaption>{{ . }}</figcaption>
-      {{ end }}
-    </figure>
-    {{ end }}
-
     {{/* Two-column layout: main content left, sidebar right */}}
     <div class="article-layout">
 
       <div class="article-main">
+        {{/* Featured Image */}}
+        {{ with .Params.image }}
+        <figure class="article-hero-image">
+          <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="eager" decoding="async" itemprop="image">
+          {{ with $.Params.image_caption }}
+          <figcaption>{{ . }}</figcaption>
+          {{ end }}
+        </figure>
+        {{ end }}
+
         {{/* Article Content */}}
         <div class="article-content prose" itemprop="articleBody">
           {{ .Content }}
