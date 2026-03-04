@@ -1060,6 +1060,20 @@ h4 { font-size: var(--font-size-lg); }
   margin-right: var(--space-md);
 }
 
+/* Homepage: make article cards smaller and fit three per row */
+.homepage-main .article-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-lg);
+}
+
+.homepage-main .article-card__content {
+  padding: var(--space-md);
+}
+
+.homepage-main .article-card__title {
+  font-size: var(--font-size-base);
+}
+
 
 /* ---- 11. Mini Cards (Category Showcase) ---- */
 .category-showcase {
