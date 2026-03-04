@@ -2,14 +2,14 @@
 title: "নদীর গান"
 slug: "nodir-gaan"
 date: 2026-02-20
-author: "priyanka-sen"
+author: "purabi-basu"
 categories: ["kobita"]
 tags: ["নদী", "প্রকৃতি", "গান"]
 featured: false
 image: "/images/articles/nodir-gaan.jpg"
 excerpt: "পদ্মার তীরে বসে শোনা এক চিরন্তন সুরের কথা — নদী যে গান গায়, তা কেবল জলের নয়, জীবনের।"
-seo_title: "নদীর গান — প্রিয়াংকা সেন | ছায়াবৃত"
-seo_description: "প্রিয়াংকা সেনের কবিতা — নদী ও জীবনের সমান্তরাল প্রবাহের এক কাব্যিক উপস্থাপনা।"
+seo_title: "নদীর গান — পূরবী বসু | ছায়াবৃত"
+seo_description: "পূরবী বসুের কবিতা — নদী ও জীবনের সমান্তরাল প্রবাহের এক কাব্যিক উপস্থাপনা।"
 ---
 
 নদী, তুমি কোথা থেকে এলে?

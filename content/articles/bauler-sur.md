@@ -2,13 +2,13 @@
 title: "বাউলের সুর"
 slug: "bauler-sur"
 date: 2026-02-05
-author: "animesh-das"
+author: "anisur-rahman"
 categories: ["gaan"]
 tags: ["গান", "বাউল", "লোকসংগীত", "আধ্যাত্মিকতা"]
 featured: false
 image: "/images/articles/bauler-sur.jpg"
 excerpt: "বাংলার বাউল গানের পরম্পরা, দর্শন ও আধুনিক প্রাসঙ্গিকতা — নতুন একটি বাউল সুরের সঙ্গে।"
-seo_title: "বাউলের সুর — অনিমেষ দাস | ছায়াবৃত"
+seo_title: "বাউলের সুর — আনিসুর রহমান | ছায়াবৃত"
 seo_description: "বাংলার বাউল গানের ঐতিহ্য, দর্শন ও একটি নতুন বাউল সুরের কথা।"
 ---
 

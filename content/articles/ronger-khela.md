@@ -2,13 +2,13 @@
 title: "রঙের খেলা"
 slug: "ronger-khela"
 date: 2026-03-01
-author: "tandra-ghosh"
+author: "taniya-ahmed"
 categories: ["chora"]
 tags: ["ছড়া", "শিশু", "রং", "আনন্দ"]
 featured: false
 image: "/images/articles/ronger-khela.jpg"
 excerpt: "ছোটদের জন্য রঙিন ছড়া — প্রকৃতির রং, জীবনের রং, আনন্দের রং।"
-seo_title: "রঙের খেলা — তন্দ্রা ঘোষ | ছায়াবৃত"
+seo_title: "রঙের খেলা — তানিয়া আহমেদ | ছায়াবৃত"
 seo_description: "ছোটদের জন্য রঙিন ছড়ার সংকলন — রং নিয়ে মজার ও শিক্ষামূলক ছড়া।"
 ---
 

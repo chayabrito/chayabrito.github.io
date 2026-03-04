@@ -2,13 +2,13 @@
 title: "স্বপ্নের জানালা"
 slug: "swapner-janala"
 date: 2026-03-03
-author: "sumitra-chakraborty"
+author: "shamima-akhter"
 categories: ["khola-janala"]
 tags: ["খোলা জানালা", "মুক্তগদ্য", "স্বপ্ন", "জীবন"]
 featured: false
 image: "/images/articles/swapner-janala.jpg"
 excerpt: "মুক্তগদ্যে লেখা জীবনের ছোট ছোট পর্যবেক্ষণ — স্বপ্ন ও বাস্তবের মাঝখানে দাঁড়িয়ে।"
-seo_title: "স্বপ্নের জানালা — সুমিত্র চক্রবর্তী | ছায়াবৃত"
+seo_title: "স্বপ্নের জানালা — শামীমা আখতার | ছায়াবৃত"
 seo_description: "মুক্তগদ্যে জীবন, স্বপ্ন ও বাস্তবের মাঝখানের অনুভূতিগুলোর কথা।"
 ---
 

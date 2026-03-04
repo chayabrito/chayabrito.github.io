@@ -2,13 +2,13 @@
 title: "রবীন্দ্রনাথের কাব্যদর্শন"
 slug: "rabindranath-er-kabyadarshan"
 date: 2025-12-20
-author: "debashis-mukhopadhyay"
+author: "kabir-ahmed"
 categories: ["probondho"]
 tags: ["প্রবন্ধ", "রবীন্দ্রনাথ", "কাব্যদর্শন", "সাহিত্য"]
 featured: false
 image: "/images/articles/rabindranath.jpg"
 excerpt: "রবীন্দ্রনাথের কাব্যভাবনায় প্রকৃতি, প্রেম ও আধ্যাত্মিকতার ত্রিমাত্রিক সম্পর্কের বিশ্লেষণ।"
-seo_title: "রবীন্দ্রনাথের কাব্যদর্শন — দেবাশিস মুখোপাধ্যায় | ছায়াবৃত"
+seo_title: "রবীন্দ্রনাথের কাব্যদর্শন — কবির আহমেদ | ছায়াবৃত"
 seo_description: "রবীন্দ্রনাথ ঠাকুরের কাব্য-দর্শনে প্রকৃতি, প্রেম ও অধ্যাত্মবাদের পারস্পরিক সম্পর্কের বিশ্লেষণ।"
 ---
 
