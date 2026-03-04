@@ -11,7 +11,7 @@
     "tags": {{ $page.Params.tags | default slice | jsonify }},
     "author": {{ $page.Params.author | default "" | jsonify }},
     "date": {{ $page.Date.Format "2006-01-02" | jsonify }},
-    "readingTime": {{ $page.ReadingTime | replaceRE "0" "০" | replaceRE "1" "১" | replaceRE "2" "২" | replaceRE "3" "৩" | replaceRE "4" "৪" | replaceRE "5" "৫" | replaceRE "6" "৬" | replaceRE "7" "৭" | replaceRE "8" "৮" | replaceRE "9" "৯" }}
+    "readingTime": {{ $page.ReadingTime }}
   }
 {{- end -}}
 ]
