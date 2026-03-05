@@ -68,6 +68,9 @@
 {{ end }}
 {{ end }}
 
+{{/* JSON-LD Structured Data */}}
+{{- partial "json-ld.html" . -}}
+
 {{/* Theme initialization (prevent FOUC) */}}
 <script>
   (function() {

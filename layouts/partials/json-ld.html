@@ -1,0 +1,117 @@
+{{/* JSON-LD Structured Data */}}
+
+{{/* WebSite + Organization — Homepage */}}
+{{ if .IsHome }}
+{{ $sameAs := slice }}
+{{ with .Site.Params.social.facebook }}{{ $sameAs = $sameAs | append . }}{{ end }}
+{{ with .Site.Params.social.twitter }}{{ $sameAs = $sameAs | append . }}{{ end }}
+{{ with .Site.Params.social.instagram }}{{ $sameAs = $sameAs | append . }}{{ end }}
+
+{{ $websiteLD := dict
+  "@context" "https://schema.org"
+  "@type" "WebSite"
+  "name" .Site.Title
+  "url" .Site.BaseURL
+  "description" .Site.Params.description
+  "potentialAction" (dict
+    "@type" "SearchAction"
+    "target" (dict
+      "@type" "EntryPoint"
+      "urlTemplate" (printf "%ssearch/?q={search_term_string}" .Site.BaseURL)
+    )
+    "query-input" "required name=search_term_string"
+  )
+}}
+{{ printf "<script type=\"application/ld+json\">%s</script>" ($websiteLD | jsonify) | safeHTML }}
+
+{{ $orgLD := dict
+  "@context" "https://schema.org"
+  "@type" "Organization"
+  "name" .Site.Title
+  "url" .Site.BaseURL
+  "logo" (dict
+    "@type" "ImageObject"
+    "url" (.Site.Params.logo | absURL)
+  )
+  "contactPoint" (dict
+    "@type" "ContactPoint"
+    "email" .Site.Params.email
+    "contactType" "editorial"
+  )
+  "sameAs" $sameAs
+}}
+{{ printf "<script type=\"application/ld+json\">%s</script>" ($orgLD | jsonify) | safeHTML }}
+{{ end }}
+
+{{/* Article + BreadcrumbList — Article single pages */}}
+{{ if and .IsPage (eq .Type "articles") }}
+{{ $author := dict "@type" "Person" "name" "ছায়াবৃত সম্পাদক" }}
+{{ with .Params.author }}
+  {{ $authorPage := $.Site.GetPage (printf "/authors/%s" .) }}
+  {{ if $authorPage }}
+    {{ $author = dict "@type" "Person" "name" $authorPage.Title "url" $authorPage.Permalink }}
+  {{ end }}
+{{ end }}
+
+{{ $articleLD := dict
+  "@context" "https://schema.org"
+  "@type" "Article"
+  "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+  "headline" (.Params.seo_title | default .Title)
+  "description" (.Params.seo_description | default (.Params.excerpt | default ""))
+  "author" $author
+  "publisher" (dict
+    "@type" "Organization"
+    "name" .Site.Title
+    "logo" (dict "@type" "ImageObject" "url" (.Site.Params.logo | absURL))
+  )
+  "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+  "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+  "url" .Permalink
+  "inLanguage" "bn"
+}}
+{{ with .Params.image }}{{ $articleLD = merge $articleLD (dict "image" (. | absURL)) }}{{ end }}
+{{ printf "<script type=\"application/ld+json\">%s</script>" ($articleLD | jsonify) | safeHTML }}
+
+{{ $breadcrumbLD := dict
+  "@context" "https://schema.org"
+  "@type" "BreadcrumbList"
+  "itemListElement" (slice
+    (dict "@type" "ListItem" "position" 1 "name" .Site.Title "item" .Site.BaseURL)
+    (dict "@type" "ListItem" "position" 2 "name" "লেখা" "item" ("/articles/" | absURL))
+    (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink)
+  )
+}}
+{{ printf "<script type=\"application/ld+json\">%s</script>" ($breadcrumbLD | jsonify) | safeHTML }}
+{{ end }}
+
+{{/* Person + BreadcrumbList — Author single pages */}}
+{{ if and .IsPage (eq .Type "authors") }}
+{{ $personLD := dict
+  "@context" "https://schema.org"
+  "@type" "Person"
+  "name" .Title
+  "url" .Permalink
+}}
+{{ with .Params.bio }}{{ $personLD = merge $personLD (dict "description" .) }}{{ end }}
+{{ with .Params.photo }}{{ $personLD = merge $personLD (dict "image" (. | absURL)) }}{{ end }}
+{{ $sameAs := slice }}
+{{ with .Params.social }}
+  {{ with .facebook }}{{ $sameAs = $sameAs | append . }}{{ end }}
+  {{ with .twitter }}{{ $sameAs = $sameAs | append . }}{{ end }}
+  {{ with .website }}{{ $sameAs = $sameAs | append . }}{{ end }}
+{{ end }}
+{{ if gt (len $sameAs) 0 }}{{ $personLD = merge $personLD (dict "sameAs" $sameAs) }}{{ end }}
+{{ printf "<script type=\"application/ld+json\">%s</script>" ($personLD | jsonify) | safeHTML }}
+
+{{ $breadcrumbLD := dict
+  "@context" "https://schema.org"
+  "@type" "BreadcrumbList"
+  "itemListElement" (slice
+    (dict "@type" "ListItem" "position" 1 "name" .Site.Title "item" .Site.BaseURL)
+    (dict "@type" "ListItem" "position" 2 "name" "লেখক পরিচিতি" "item" ("/authors/" | absURL))
+    (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink)
+  )
+}}
+{{ printf "<script type=\"application/ld+json\">%s</script>" ($breadcrumbLD | jsonify) | safeHTML }}
+{{ end }}
