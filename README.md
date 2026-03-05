@@ -154,7 +154,7 @@ seo_description: "SEO বর্ণনা"
 | বাংলা নাম | ইংরেজি স্লাগ |
 |---|---|
 | কবিতা | `kobita` |
-| গল্প | `golpo` |
+| ছোটগল্প | `chotogolpo` |
 | প্রবন্ধ | `probondho` |
 | অনুবাদ | `onubad` |
 | সাক্ষাৎকার | `shakkhatkar` |

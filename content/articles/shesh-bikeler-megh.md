@@ -3,7 +3,7 @@ title: "শেষ বিকেলের মেঘ"
 slug: "shesh-bikeler-megh"
 date: 2026-02-15
 author: "shamima-akhter"
-categories: ["golpo"]
+categories: ["chotogolpo"]
 tags: ["গল্প", "বিকেল", "স্মৃতি", "নস্টালজিয়া"]
 featured: true
 image: "/images/articles/shesh-bikeler-megh.jpg"

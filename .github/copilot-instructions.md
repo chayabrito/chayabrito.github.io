@@ -10,11 +10,11 @@ Hugo-based Bengali literary magazine with 11 content categories, client-side sea
 - **Authors** (`content/authors/*.md`): Author profiles linked via slug reference (not direct name)
 - **Categories**: English slugs map to Bengali names via `hugo.yaml` `params.categoryMap`
   ```yaml
-  # Example: kobita → "কবিতা", golpo → "গল্প"
+  # Example: kobita → "কবিতা", chotogolpo → "ছোটগল্পগল্প"
   ```
 
 ### Category System
-**Critical**: Categories use English slugs (`kobita`, `golpo`, etc.) in frontmatter but display Bengali names via `params.categoryMap`. Always use slug references:
+**Critical**: Categories use English slugs (`kobita`, `chotogolpo`, etc.) in frontmatter but display Bengali names via `params.categoryMap`. Always use slug references:
 ```markdown
 categories: ["kobita"]  # NOT ["কবিতা"]
 ```

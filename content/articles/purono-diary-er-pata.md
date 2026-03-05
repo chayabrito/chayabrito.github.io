@@ -3,7 +3,7 @@ title: "পুরনো ডায়েরির পাতা"
 slug: "purono-diary-er-pata"
 date: 2026-01-28
 author: "nilufar-yasmin"
-categories: ["golpo"]
+categories: ["chotogolpo"]
 tags: ["গল্প", "ডায়েরি", "প্রেম", "চিঠি"]
 featured: false
 image: "/images/articles/purono-diary.jpg"

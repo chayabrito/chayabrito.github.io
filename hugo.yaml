@@ -82,7 +82,7 @@ menus:
       url: "/categories/kobita/"
       weight: 1
     - name: "গল্প"
-      url: "/categories/golpo/"
+      url: "/categories/chotogolpo/"
       weight: 2
     - name: "প্রবন্ধ"
       url: "/categories/probondho/"
@@ -147,7 +147,7 @@ params:
 
   categoryMap:
     kobita: "কবিতা"
-    golpo: "গল্প"
+    chotogolpo: "ছোটগল্প"
     probondho: "প্রবন্ধ"
     onubad: "অনুবাদ"
     shakkhatkar: "সাক্ষাৎকার"
