@@ -5,7 +5,7 @@ date: 2026-02-28
 author: "taniya-ahmed"
 categories: ["shakkhatkar"]
 tags: ["সাক্ষাৎকার", "কবিতা", "সাহিত্য", "সমকালীন"]
-featured: true
+featured: false
 image: "/images/articles/shakkhatkar.jpg"
 excerpt: "সমকালীন বাংলা কবিতার অন্যতম কণ্ঠস্বর কবি জাহিদ হায়দারের সঙ্গে কবিতা, জীবন ও সৃষ্টি নিয়ে আলাপ।"
 seo_title: "কবি জাহিদ হায়দারের সাক্ষাৎকার | ছায়াবৃত"
