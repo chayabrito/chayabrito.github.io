@@ -10,8 +10,9 @@ enableRobotsTXT: true
 enableGitInfo: true
 
 # Pagination
-paginate: 12
-paginatePath: "page"
+pagination:
+  pagerSize: 12
+  path: "page"
 
 # Taxonomies
 taxonomies:
