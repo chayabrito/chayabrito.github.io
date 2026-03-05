@@ -42,7 +42,7 @@
       <a href="{{ "categories/" | relURL }}" itemprop="item"><span itemprop="name">বিভাগসমূহ</span></a>
       <meta itemprop="position" content="2">
     </li>
-      {{ if .Title }}
+      {{ if eq .Kind "term" }}
       <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
         <span itemprop="name">{{ .Title }}</span>
         <meta itemprop="position" content="3">
